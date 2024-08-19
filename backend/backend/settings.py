@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from dotenv import load_dotenv
+from datetime import timedelta
 
 import os
 
@@ -48,10 +49,16 @@ INSTALLED_APPS = [
     'core',
     'userauths',
     'api',
+    
+    # Third Party Apps
+	'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -110,7 +117,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -132,6 +138,8 @@ STATIC_ROOT = BASE_DIR / 'templates'
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / 'media'
+
+AUTH_USER_MODEL = 'userauths.CustomUser'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -230,3 +238,5 @@ JAZZMIN_UI_TWEAKS = {
     },
     "actions_sticky_top": False
 }
+
+CORS_ALLOW_ALL_ORIGINS = True
