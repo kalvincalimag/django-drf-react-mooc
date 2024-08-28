@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 from datetime import timedelta
-
 import os
 
 load_dotenv()
@@ -54,6 +53,7 @@ INSTALLED_APPS = [
 	'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
+    'anymail',
 ]
 
 MIDDLEWARE = [
@@ -140,6 +140,16 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / 'media'
 
 AUTH_USER_MODEL = 'userauths.CustomUser'
+
+MAILGUN_SECRET_KEY = os.getenv("MG_SECRET_KEY")
+MAILGUN_SENDER_DOMAIN = os.getenv("MG_SENDER_DOMAIN")
+
+ANYMAIL = {
+    "MAILGUN_API_KEY": MAILGUN_SECRET_KEY,
+    "MAILGUN_SENDER_DOMAIN": MAILGUN_SENDER_DOMAIN,
+}
+
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

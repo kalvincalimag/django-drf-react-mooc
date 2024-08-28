@@ -1,11 +1,13 @@
 import random
+from rest_framework.response import Response
 from api.serializers import MyTokenObtainPairSerializer, CustomUserSerializer, ProfileSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from userauths.models import CustomUser, Profile
-from rest_framework import generics
+from rest_framework import generics, status
 from api.serializers import RegisterSerializer
 from rest_framework.permissions import AllowAny 
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.core.mail import EmailMultiAlternatives
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
@@ -37,6 +39,28 @@ class PasswordResetEmailVerifyAPIView(generics.RetrieveAPIView):
             user.save()
             
             link = f'http://localhost://5173/create-new-password/?otp={user.otp}&uuidb64={uuidb64}&refresh_token={refresh_token}'
+
+
             print("link====", link)
             
         return user 
+
+class PasswordChangeAPIView(generics.CreateAPIView):
+    permission_classes = [AllowAny] 
+    serializer_class = CustomUserSerializer
+    
+    def create(self, request, *args, **kwargs):        
+        otp = request.data['otp']
+        uuidb64 = request.data['uuidb64']
+        password = request.data['password']
+        
+        user = CustomUser.objects.get(id=uuidb64, otp=otp)
+        
+        if user:
+            user.set_password(password)
+            user.otp = ""
+            user.save()
+            
+            return Response({"message": "Password Changed Successfully."}, status=status.HTTP_201_CREATED)
+        else: 
+            return Response({"message": "User does not exist.."}, status=status.HTTP_404_NOT_FOUND)
