@@ -141,14 +141,15 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 AUTH_USER_MODEL = 'userauths.CustomUser'
 
-MAILGUN_SECRET_KEY = os.getenv("MG_SECRET_KEY")
-MAILGUN_SENDER_DOMAIN = os.getenv("MG_SENDER_DOMAIN")
+MAILGUN_SECRET_KEY = os.getenv("MAILGUN_API_KEY")
+MAILGUN_SENDER_DOMAIN = os.getenv("MAILGUN_SENDER_DOMAIN")
 
 ANYMAIL = {
     "MAILGUN_API_KEY": MAILGUN_SECRET_KEY,
     "MAILGUN_SENDER_DOMAIN": MAILGUN_SENDER_DOMAIN,
 }
 
+FROM_EMAIL = os.getenv("FROM_EMAIL")
 EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 
 # Default primary key field type
