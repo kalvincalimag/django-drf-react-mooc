@@ -1,15 +1,15 @@
 import random
-from rest_framework.response import Response
-from api.serializers import MyTokenObtainPairSerializer, CustomUserSerializer, ProfileSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
 from userauths.models import CustomUser, Profile
 from rest_framework import generics, status
-from api.serializers import RegisterSerializer
+from rest_framework.response import Response
 from rest_framework.permissions import AllowAny 
+from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
+from api.serializers import MyTokenObtainPairSerializer, CustomUserSerializer
+from api.serializers import RegisterSerializer
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
