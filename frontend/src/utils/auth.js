@@ -1,6 +1,6 @@
 import { useAuthStore } from "../store/auth"
 import axios from './axios'
-import jwt_decode from 'jwt-cookie'
+import jwt_decode from 'js-cookie'
 import Cookie from 'js-cookie'
 import Swal from 'sweetalert2'
 import apiInstance from "./axios"
@@ -60,7 +60,7 @@ export const setUser = async () => {
     const refresh_token = Cookie.get("refresh_token")
 
     if(!access_token || !refresh_token){
-        alert("Tokens do not exist.")
+        // alert("Tokens do not exist.")
         return;
     } 
 
