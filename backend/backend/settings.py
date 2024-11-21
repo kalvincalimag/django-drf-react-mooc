@@ -159,16 +159,16 @@ EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 JAZZMIN_SETTINGS = {
-    "site_title": "LMS Admin",
-    "site_header": "LMS",
-    "site_brand": "LMS",
+    "site_title": "MOOC Admin",
+    "site_header": "MOOC",
+    "site_brand": "MOOC",
     # "site_logo": "books/img/logo.png",
     "login_logo": None,
     "login_logo_dark": None,
     "site_logo_classes": "img-circle",
     "site_icon": None,
-    "welcome_sign": "Welcome to the LMS Admin",
-    "copyright": "LMS Admin Ltd",
+    "welcome_sign": "Welcome to the MOOC Admin",
+    "copyright": "MOOC Admin Ltd",
     "search_model": ["auth.User", "auth.Group"],
     "user_avatar": None,
 
