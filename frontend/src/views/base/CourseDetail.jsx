@@ -430,7 +430,7 @@ function CourseDetail() {
                                                             {/* Card body */}
                                                             <div className="card-body">
                                                                 {/* Title */}
-                                                                <h3 className="card-title mb-0">Destiny Franks</h3>
+                                                                <h3 className="card-title mb-0">Kalvin Calimag</h3>
                                                                 <p className="mb-2">Instructor of Web/Mobile App Development</p>
                                                                 {/* Social button */}
                                                                 <ul className="list-inline mb-3">
