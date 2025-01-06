@@ -22,8 +22,10 @@ function Register() {
 
     const {error} = await register(fullName, email, password, password2);
     if (error) {
+      setIsLoading(false);
       alert(error)
     } else {
+      setIsLoading(false);
       navigate("/");
       alert("Registration successful, you have now been logged in.")
     }
@@ -102,9 +104,15 @@ function Register() {
                   </div>
                   <div>
                     <div className="d-grid">
+                      {isLoading === true ? (
+                      <button disabled type="submit" className="btn btn-primary">
+                        Processing <i className='fas fa-spinner fa-spin'></i>
+                      </button>
+                      ) : (
                       <button type="submit" className="btn btn-primary">
                         Sign Up <i className='fas fa-user-plus'></i>
                       </button>
+                      )}
                     </div>
                   </div>
                 </form>
