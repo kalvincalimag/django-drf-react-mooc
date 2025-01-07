@@ -51,7 +51,6 @@ export const logout = () => {
     Cookie.remove("access_token");
     Cookie.remove("refresh_token");
     useAuthStore.getState().setUser(null)
-    alert("You have been logged out.");
 };
 
 export const setUser = async () => {
