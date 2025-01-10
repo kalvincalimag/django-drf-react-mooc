@@ -68,7 +68,7 @@ class PasswordResetEmailVerifyAPIView(generics.RetrieveAPIView):
 class PasswordChangeAPIView(generics.CreateAPIView):
     permission_classes = [AllowAny] 
     serializer_class = CustomUserSerializer
-    
+
     def create(self, request, *args, **kwargs):        
         otp = request.data['otp']
         uuidb64 = request.data['uuidb64']
@@ -78,7 +78,7 @@ class PasswordChangeAPIView(generics.CreateAPIView):
         
         if user:
             user.set_password(password)
-            user.otp = ""
+            # user.otp = ""
             user.save()
             
             return Response({"message": "Password Changed Successfully."}, status=status.HTTP_201_CREATED)
