@@ -1,5 +1,5 @@
 from django.db import models
-from userauths.models import CustomUser
+from userauths.models import CustomUser, Profile
 from django.utils.text import slugify
 from shortuuid.django_fields import ShortUUIDField
 from django.utils import timezone
@@ -144,7 +144,7 @@ class VariantItem(models.Model):
     variant_item_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
     date = models.DateTimeField(default=timezone.now())
 
-    def __self__(self):
+    def __str__(self):
         return f"{self.variant.title} - {self.title}"
     
     def save(self, *args, **kwargs):
@@ -162,3 +162,39 @@ class VariantItem(models.Model):
             
             self.content_duration = duration_text
             super().save(updated_fields=['content_duration'])
+            
+class Question_Answer(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
+    date = models.DateTimeField(default=timezone.now())
+    title = models.CharField(max_length=1000, null=True, blank=True)
+    qa_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
+    
+    class Meta:
+        ordering = ["-date"]
+        
+    def messages(self):
+        return Question_Answer_Message.objects.filter(question=self)
+    
+    def profile(self):
+        return Profile.objects.get(user=self.user)
+    
+    def __str__(self):
+        return f"{self.course.title} - {self.title}"
+
+class Question_Answer_Message(models.Model):
+    question = models.ForeignKey(Question_Answer, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
+    message = models.TextField(null=True, blank=True)
+    qam_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
+    date = models.DateTimeField(default=timezone.now())
+    
+    class Meta: 
+        ordering = ["date"]
+    
+    def profile(self):
+        return Profile.objects.get(user=self.user)
+    
+    def __str__(self):
+        return f"{self.user.username} - {self.question.title}"
