@@ -213,7 +213,7 @@ class Question_Answer_Message(models.Model):
 
 
 class Cart(models.Model):
-    cart_id = ShortUUIDField(unique=True, editable=False, lenght=6, max_length=20, alphabet="1234567890")
+    cart_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now())
@@ -225,7 +225,7 @@ class Cart(models.Model):
     def __str__(self):
         return self.course.title
 
-     
+
 class CartOrder(models.Model):
     oid = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
     student = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
@@ -235,7 +235,7 @@ class CartOrder(models.Model):
     total = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     initial_total = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     saved = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
-    payment_status = models.CharField(choices=PAYMENT_STATUS, default='Processing')
+    payment_status = models.CharField(max_length=100, choices=PAYMENT_STATUS, default='Processing')
     full_name = models.CharField(max_length=100, null=True, blank=True)
     email = models.CharField(max_length=100, null=True, blank=True)
     date = models.DateTimeField(default=timezone.now())
@@ -277,3 +277,55 @@ class CartOrderItem(models.Model):
 
     def __str__(self):
         return self.oid
+
+
+class Certificate(models.Model):
+    certificate_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
+    date = models.DateTimeField(default=timezone.now())
+    
+    def __str__(self):
+        return self.course.title
+
+
+class CompletedLesson(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
+    variant_item = models.ForeignKey(VariantItem, on_delete=models.CASCADE)
+    date = models.DateTimeField(default=timezone.now())
+    
+    def __str__(self):
+        return self.course.title
+
+
+class EnrolledCourse(models.Model):
+    enrollment_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
+    order_item = models.ForeignKey(CartOrderItem, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    date = models.DateTimeField(default=timezone.now())
+    
+    def lectures(self):
+        return VariantItem.objects.filter(variant__course=self.course)
+    
+    def completed_lessons(self):
+        return CompletedLesson.objects.filter(course=self.course, user=self.user)
+    
+    def curriculum(self):
+        return Variant.objects.filter(course=self.course)
+    
+    def notes(self):
+        return Note.objects.filter(course=self.course, user=self.user)
+    
+    def question_answer(self):
+        return Question_Answer.objects.filter(course=self.course)
+    
+    def review(self):
+        return Review.objects.filter(course=self.course, user=self.user).first()
+    
+    def __str__(self):
+        return self.course.title
+
+
