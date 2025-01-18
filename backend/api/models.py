@@ -1,3 +1,7 @@
+#workaround for known issues with ffmpeg on m1 macs
+import os
+os.environ["IMAGEIO_FFMPEG_EXE"] = "/usr/bin/ffmpeg"
+
 from django.db import models
 from userauths.models import CustomUser, Profile
 from django.utils.text import slugify
@@ -38,6 +42,22 @@ PAYMENT_STATUS = (
     ('Paid', 'Paid'),
     ('Processing', 'Processing'),
     ('Failed', 'Failed'),
+)
+
+RATING = (
+    (1, '1 Stars'),
+    (2, '2 Stars'),
+    (3, '3 Stars'),
+    (4, '4 Stars'),
+    (5, '5 Stars'),
+)
+
+NOTI_TYPE = (
+    ('Draft', 'Draft'),
+    ('New Order', 'New Order'),
+    ('New Review', 'New Review'),
+    ('New Course Question', 'New Course Question'),
+    ('Course Published', 'Course Published'),
 )
 
 class Teacher(models.Model):
@@ -100,14 +120,14 @@ class Course(models.Model):
     publishing_status = models.CharField(max_length=40, choices=COURSE_PUBLISHING_STATUS, default='Draft')
     featured = models.BooleanField(default=False)
     course_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return self.title
     
     def save(self, *args, **kwargs):
         if self.slug == "" or self.slug == None:
-            self.slug == slugify(self.title)
+            self.slug = slugify(self.title)
         super(Course, self).save(*args, **kwargs)
 
     def students(self):
@@ -131,16 +151,16 @@ class Course(models.Model):
     
 
 class Variant(models.Model):
+    variant_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     title = models.CharField(max_length=1000) 
-    variant_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return self.title
     
     def variant_items(self):
-        return VariantItem.objects.filter()
+        return VariantItem.objects.filter(variant=self)
 
 
 class VariantItem(models.Model):
@@ -152,7 +172,7 @@ class VariantItem(models.Model):
     description = models.TextField(null=True, blank=True)
     preview = models.BooleanField(default=False)
     variant_item_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"{self.variant.title} - {self.title}"
@@ -177,7 +197,7 @@ class VariantItem(models.Model):
 class Question_Answer(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
     title = models.CharField(max_length=1000, null=True, blank=True)
     qa_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
     
@@ -200,7 +220,7 @@ class Question_Answer_Message(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
     message = models.TextField(null=True, blank=True)
     qam_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
     
     class Meta: 
         ordering = ["date"]
@@ -216,7 +236,7 @@ class Cart(models.Model):
     cart_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
     price = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     tax_fee = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     total = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
@@ -238,7 +258,7 @@ class CartOrder(models.Model):
     payment_status = models.CharField(max_length=100, choices=PAYMENT_STATUS, default='Processing')
     full_name = models.CharField(max_length=100, null=True, blank=True)
     email = models.CharField(max_length=100, null=True, blank=True)
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
     country = models.CharField(max_length=100, null=True, blank=True)
     coupons = models.ManyToManyField("api.Coupon", blank=True)
     stripe_session_id = models.CharField(max_length=1000, null=True, blank=True)
@@ -264,7 +284,7 @@ class CartOrderItem(models.Model):
     saved = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     coupons = models.ForeignKey("api.Coupon", on_delete=models.SET_NULL, null=True, blank=True)
     applied_coupon = models.BooleanField(default=False)
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
 
     class Meta: 
         ordering = ["-date"]
@@ -283,7 +303,7 @@ class Certificate(models.Model):
     certificate_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return self.course.title
@@ -293,7 +313,7 @@ class CompletedLesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
     variant_item = models.ForeignKey(VariantItem, on_delete=models.CASCADE)
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return self.course.title
@@ -305,7 +325,7 @@ class EnrolledCourse(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
     
     def lectures(self):
         return VariantItem.objects.filter(variant__course=self.course)
@@ -328,4 +348,45 @@ class EnrolledCourse(models.Model):
     def __str__(self):
         return self.course.title
 
+
+class Note(models.Model):
+    note_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    title = models.CharField(max_length=1000, null=True, blank=True)
+    note = models.TextField(null=True, blank=True) 
+    date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.title
+
+
+class Review(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    review = models.TextField()
+    rating = models.IntegerField(choices=RATING, default=None)
+    reply = models.CharField(max_length=1000, null=True, blank=True)
+    active = models.BooleanField(default=True)
+    date = models.DateTimeField(default=timezone.now)
+
+    def profile(self):
+        return Profile.objects.get(user=self.user)
+
+    def __str__(self):
+        return self.course.title
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
+    teacher = models.ForeignKey(Teacher, on_delete=models.SET_NULL, null=True, blank=True)
+    order = models.ForeignKey(CartOrder, on_delete=models.SET_NULL, null=True, blank=True)
+    order_item = models.ForeignKey(CartOrderItem, on_delete=models.SET_NULL, null=True, blank=True)
+    review = models.ForeignKey(Review, on_delete=models.SET_NULL, null=True, blank=True)
+    type = models.CharField(max_length=100, choices=NOTI_TYPE, default='')
+    seen = models.BooleanField(default=False)
+    date = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return self.type
 
