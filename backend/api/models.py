@@ -234,7 +234,7 @@ class Question_Answer_Message(models.Model):
 
 
 class Cart(models.Model):
-    cart_id = ShortUUIDField(unique=True, editable=False, length=6, max_length=20, alphabet="1234567890")
+    cart_id = ShortUUIDField(editable=False, length=6, max_length=20, alphabet="1234567890")
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
