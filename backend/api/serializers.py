@@ -2,8 +2,11 @@ from rest_framework import serializers
 from userauths.models import CustomUser, Profile
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth.password_validation import validate_password
+from api import models as api_models
+
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
@@ -13,6 +16,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['username'] = user.username
 
         return token 
+
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
@@ -39,14 +43,54 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
         
         return user
-                    
+              
+      
 class CustomUserSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = CustomUser
         fields = '__all__'
 
+
 class ProfileSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = Profile
         fields = '__all__'
-        
+
+
+class VariantItemSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = api_models.VariantItem
+        fields = '__all__'
+
+
+class VariantSerializer(serializers.ModelSerializer):
+    
+    variant_items = VariantItemSerializer()
+    
+    class Meta:
+        model = api_models.Variant
+        fields = '__all__'
+
+
+class Question_Answer_MessageSerializer(serializers.ModelSerializer):
+    
+    profile = ProfileSerializer(many=False)
+    
+    class Meta:
+        model = api_models.Question_Answer_Message
+        fields = '__all__'
+
+
+class Question_AnswerSerializer(serializers.ModelSerializer):
+    
+    messages = Question_Answer_MessageSerializer(many=True)
+    profile = ProfileSerializer(many=False)
+    
+    class Meta:
+        model = api_models.Question_Answer
+        fields = '__all__'
+
+
