@@ -130,3 +130,34 @@ class CompletedLessonSerializer(serializers.ModelSerializer):
         model = api_models.CompletedLesson
         fields = '__all__'
 
+
+class NoteSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = api_models.Note
+        fields = '__all__'
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+    
+    profile = ProfileSerializer(many=False)
+    
+    class Meta:
+        model = api_models.Review
+        fields = '__all__'
+        
+
+class EnrolledCourseSerializer(serializers.ModelSerializer):
+
+    lectures = VariantItemSerializer(many=True, read_only=True)
+    completed_lessons = CompletedLessonSerializer(many=True, read_only=True)
+    curriculum = VariantSerializer(many=True, read_only=True)
+    notes = NoteSerializer(many=True, read_only=True)
+    question_answer = Question_AnswerSerializer(many=True, read_only=True)
+    review = ReviewSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = api_models.EnrolledCourse
+        fields = '__all__'
+
+
