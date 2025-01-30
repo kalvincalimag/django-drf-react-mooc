@@ -161,3 +161,49 @@ class EnrolledCourseSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CourseSerializer(serializers.ModelSerializer):
+    students = EnrolledCourseSerializer(many=True)
+    curriculum = VariantItemSerializer(many=True)
+    lectures = VariantItemSerializer(many=True)
+    average_rating = ReviewSerializer()
+    reviews = ReviewSerializer(many=True)
+    
+    class Meta:
+        model = api_models.Course
+        fields = [
+            "category",
+            "teacher",
+            "file",
+            "image",
+            "title",
+            "description",
+            "price",
+            "slug",
+            "language",
+            "level",
+            "submission_status",
+            "publishing_status",
+            "featured",
+            "course_id",
+            "date",
+            "students",
+            "curriculum",
+            "lectures",
+            "average_rating",
+            "rating_count",
+            "reviews",
+        ]          
+
+
+class CategorySerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = api_models.Category
+        fields = [
+            "title",
+            "image",
+            "slug",
+            "course_count",
+        ]
+
+
