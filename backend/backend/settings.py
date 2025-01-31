@@ -162,7 +162,6 @@ JAZZMIN_SETTINGS = {
     "site_title": "MOOC Admin",
     "site_header": "MOOC",
     "site_brand": "MOOC",
-    # "site_logo": "books/img/logo.png",
     "login_logo": None,
     "login_logo_dark": None,
     "site_logo_classes": "img-circle",
@@ -172,35 +171,10 @@ JAZZMIN_SETTINGS = {
     "search_model": ["auth.User", "auth.Group"],
     "user_avatar": None,
 
-    # Top Menu #
-    "topmenu_links": [
-        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-        {"model": "auth.User"},
-        {"app": "books"},
-    ],
-
-    # User Menu #
-    "usermenu_links": [
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-        {"model": "auth.user"}
-    ],
-
     # Side Menu #
     "show_sidebar": True,
 
     "navigation_expanded": True,
-    "hide_apps": [],
-    "hide_models": [],
-    "order_with_respect_to": ["auth", "books", "books.author", "books.book"],
-    "custom_links": {
-        "books": [{
-            "name": "Make Messages", 
-            "url": "make_messages", 
-            "icon": "fas fa-comments",
-            "permissions": ["books.view_book"]
-        }]
-    },
 
     "icons": {
         "auth": "fas fa-users-cog",
