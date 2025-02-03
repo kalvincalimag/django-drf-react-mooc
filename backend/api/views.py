@@ -8,15 +8,21 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
-from api.serializers import MyTokenObtainPairSerializer, CustomUserSerializer
-from api.serializers import RegisterSerializer
+from api import serializers as api_serializers
+from api import models as api_models
+from decimal import Decimal
+import stripe
+
+stripe.api_key = settings.STRIPE_API_KEY
+
 
 class MyTokenObtainPairView(TokenObtainPairView):
-    serializer_class = MyTokenObtainPairSerializer
+    serializer_class = api_serializers.MyTokenObtainPairSerializer
     
+
 class RegisterView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
-    serializer_class = RegisterSerializer
+    serializer_class = api_serializers.RegisterSerializer
     permission_classes = [AllowAny]
     
 def generate_random_otp(length=7):
@@ -26,7 +32,7 @@ def generate_random_otp(length=7):
     
 class PasswordResetEmailVerifyAPIView(generics.RetrieveAPIView):
     permission_classes = [AllowAny]
-    serializer_class = CustomUserSerializer
+    serializer_class = api_serializers.CustomUserSerializer
 
     def get_object(self):
         email = self.kwargs['email']
@@ -65,9 +71,10 @@ class PasswordResetEmailVerifyAPIView(generics.RetrieveAPIView):
             
         return user 
 
+
 class PasswordChangeAPIView(generics.CreateAPIView):
     permission_classes = [AllowAny] 
-    serializer_class = CustomUserSerializer
+    serializer_class = api_serializers.CustomUserSerializer
 
     def create(self, request, *args, **kwargs):        
         otp = request.data['otp']
@@ -84,3 +91,20 @@ class PasswordChangeAPIView(generics.CreateAPIView):
             return Response({"message": "Password Changed Successfully."}, status=status.HTTP_201_CREATED)
         else: 
             return Response({"message": "User does not exist.."}, status=status.HTTP_404_NOT_FOUND)
+
+
+class CategoryListAPIView(generics.ListAPIView):
+    queryset = api_models.Category.objects.filter(active=True)
+    serializer_class = api_serializers.CategorySerializer
+    permission_classes = [AllowAny]
+
+
+class CourseListAPIView(generics.ListAPIView):
+    queryset = api_models.Course.objects.filter(
+        submission_status="Published", 
+        publishing_status="Published"
+    )
+    serializer_class = api_serializers.CourseSerializer
+    permission_classes = [AllowAny]
+
+class CourseDetailAPIView(generics.RetrieveAPIView):
