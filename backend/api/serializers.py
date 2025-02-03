@@ -232,3 +232,29 @@ class TeacherSerializer(serializers.ModelSerializer):
 
 
 class NotificationSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = api_models.Notification
+        fields = '__all__'
+        
+
+class CouponSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = api_models.Coupon
+        fields = '__all__'
+        
+
+class WishlistSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = api_models.Wishlist
+        fields = '__all__'
+        
+
+class CountrySerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = api_models.Country
+        fields = '__all__'
+        
