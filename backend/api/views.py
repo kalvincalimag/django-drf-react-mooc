@@ -108,3 +108,67 @@ class CourseListAPIView(generics.ListAPIView):
     permission_classes = [AllowAny]
 
 class CourseDetailAPIView(generics.RetrieveAPIView):
+    serializer_class = api_serializers.CourseSerializer
+    
+    def get_object(self):
+        slug = self.kwargs['slug']
+        course = api_models.Course.objects.get(
+            slug=slug,         
+            submission_status="Published", 
+            publishing_status="Published"
+        )
+        
+        return course
+
+class CartAPIView(generics.CreateAPIView):
+    queryset = api_models.Cart.objects.all()
+    serializer_class = api_serializers.CartSerializer
+    permission_classes = [AllowAny]
+    
+    def create(self, request, *args, **kwargs):
+        course_id = request.data['course_id']
+        user_id = request.data['user_id']
+        price = request.data['price']
+        country_name = request.data['country_name']
+        cart_id = request.data['cart_id']
+        
+        course = api_models.Course.objects.filter(course_id=course_id).first()
+
+        user = CustomUser.objects.filter(id=user_id).first() if user_id != 'undefined' else None
+
+        try:
+            country_obj = api_models.Country.objects.filter(name=country_name).first()
+            country = country_obj.name
+        except:
+            country_obj = None
+            country = "Philippines"
+
+        tax_rate = country_obj.tax_rate / 100 if country_obj else 0
+   
+        cart = api_models.Cart.objects.filter(cart_id=cart_id, course=course).first()
+        
+        if cart:
+            cart.course = course
+            cart.user = user
+            cart.price = price
+            cart.tax_fee = Decimal(price) * Decimal(tax_rate)
+            cart.country = country
+            cart.cart_id = cart_id
+            cart.total = Decimal(cart.price) + Decimal(cart.tax_fee)
+            cart.save()
+         
+            return Response({"message": "Cart Updated Successfully."}, status=status.HTTP_200_OK)
+        else: 
+            cart = api_models.Cart()
+            cart.course = course
+            cart.user = user
+            cart.price = price
+            cart.tax_fee = Decimal(price) * Decimal(tax_rate)
+            cart.country = country
+            cart.cart_id = cart_id
+            cart.total = Decimal(cart.price) + Decimal(cart.tax_fee)
+            cart.save()
+         
+            return Response({"message": "Cart Created Successfully."}, status=status.HTTP_201_CREATED)
+
+class CartListAPIView(generics.ListAPIView):
