@@ -230,3 +230,58 @@ class CartStatsAPIView(generics.RetrieveAPIView):
     def calculate_total(self, cart_item):
         return cart_item.total
 
+class CreateOrderAPIView(generics.CreateAPIView):
+    serializer_class = api_serializers.CartOrderSerializer
+    permission_classes = [AllowAny]
+    queryset = api_models.CartOrder.objects.all()
+    
+    def create(self, request, *args, **kwargs):
+        full_name = request.data['full_name']
+        email = request.data['email']
+        country = request.data['country']
+        cart_id = request.data['cart_id']
+        user_id = request.data['user_id']
+
+        user = api_models.CustomUser.objects.get(id=user_id) if user_id != 0 else None
+        
+        cart_items = api_models.Cart.objects.filter(cart_id=cart_id)
+        
+        total_price = Decimal(0.00)
+        total_tax = Decimal(0.00)
+        initial_total = Decimal(0.00)
+        total_total = Decimal(0.00)
+        
+        order = api_models.CartOrder.objects.create(
+            student = user,
+            full_name = full_name,
+            email = email,
+            country = country
+        )
+        
+        for item in cart_items:
+            api_models.CartOrderItem.objects.create(
+                order = order,
+                course = item.course,
+                teacher = item.course.teacher,
+                price = item.course.price,
+                tax_fee = item.tax_fee,
+                total = item.total,
+                initial_total = item.total
+            )
+
+            total_tax += Decimal(item.tax_fee)
+            total_price += Decimal(item.price)
+            initial_total += Decimal(item.total)
+            total_total += Decimal(item.total)
+            
+            order.teachers.add(item.course.teacher)
+            
+        order.tax_fee = total_tax
+        order.sub_total = total_price
+        order.total = total_total
+        order.initial_total = initial_total
+        order.save()
+        
+        return Response({"message": "Order created Successfully"}, status=status.HTTP_201_CREATED)
+            
+
