@@ -285,3 +285,51 @@ class CreateOrderAPIView(generics.CreateAPIView):
         return Response({"message": "Order created Successfully"}, status=status.HTTP_201_CREATED)
             
 
+class CheckoutAPIView(generics.RetrieveAPIView):
+    queryset = api_models.CartOrder.objects.all()
+    serializer_class = api_serializers.CartOrderSerializer
+    permission_classes = [AllowAny]
+    lookup_field = 'oid'
+
+
+class CouponApplyAPIView(generics.CreateAPIView):
+    serializer_class = api_serializers.CouponSerializer
+    permission_classes = [AllowAny]
+
+    def create(self, request, *args, **kwargs):
+        order_oid = request.data['order_oid']
+        coupon_code = request.data['coupon_code']
+        
+        order = api_models.CartOrder.objects.get(oid=order_oid)
+        coupon = api_models.Coupon.objects.get(code=coupon_code)
+        
+        if coupon: 
+            order_items = api_models.CartOrderItem.objects.filter(order=order, teacher=coupon.teacher)    
+            for item in order_items:
+                if not coupon in item.coupons.all():
+                    
+                    discount = item.total * coupon.discount / 100
+                    
+                    item.price -= discount
+                    item.total -= discount
+                    item.saved += discount
+                    item.applied_coupon = True
+                    item.coupons.add(coupon)
+                                                                                
+                    order.sub_total -= discount
+                    order.total -= discount
+                    order.saved += discount 
+                    order.coupons.add(coupon)
+                                        
+                    item.save()
+                    order.save()
+                    
+                    coupon.used_by.add(order.student)
+
+                    return Response({"message": "Coupon Found and Applied"}, status=status.HTTP_201_CREATED)
+                else:
+                    return Response({"message": "Coupon Already Applied"}, status=status.HTTP_200_OK)
+
+        else: 
+            return Response({"message": "Coupon Not Found"}, status=status.HTTP_404_NOT_FOUND)
+                    
