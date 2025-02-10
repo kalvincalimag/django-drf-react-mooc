@@ -333,3 +333,35 @@ class CouponApplyAPIView(generics.CreateAPIView):
         else: 
             return Response({"message": "Coupon Not Found"}, status=status.HTTP_404_NOT_FOUND)
                     
+
+class StripeCheckoutAPIView(generics.CreateAPIView):
+    serializer_class = api_serializers.CartOrderSerializer
+    permission_classes = [AllowAny]
+    
+    def create(self, reqeust, *args, **kwargs):
+        order_oid = self.kwargs['order_oid']
+        order = api_models.CartOrder.objects.filter(oid=order_oid)
+        
+        if not order:
+            return Response({"message": "Order Not Found"}, status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            checkout_session = stripe.checkout.Session.create(
+                customer_email=order.email,
+                payment_method_types=['card'],
+                line_items=[
+                    {
+                        "currency": "usd",
+                        "price_data": {
+                            "product_data": {
+                                "name": order.full_name,
+                            },
+                            # Convert total from dollars to cents for Stripe                            
+                            "unit_amount": int(order.total * 100),
+                        },
+                        "quantity": 1,
+                    }
+                ]  
+            )
+        except:
+            pass
