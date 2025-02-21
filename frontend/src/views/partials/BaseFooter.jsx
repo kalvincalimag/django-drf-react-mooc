@@ -1,23 +1,21 @@
-import React from 'react'
+import React from 'react';
 
 function BaseFooter() {
   return (
-    <footer className="pt-lg-8 pt-5 footer bg-dark text-white mt-5">
+    <footer className="pt-lg-8 pt-5 footer bg-light text-dark mt-5" style={{ backgroundColor: '#f5f5f7' }}>
       <div className="container mt-lg-2">
         <div className="row">
-          <div className="col-lg-4 col-md-6 col-12 text-white">
-            {/* about company */}
+          {/* About Company */}
+          <div className="col-lg-4 col-md-6 col-12">
             <div className="mb-4">
-              <h1>MOOC App</h1>
+              <h1 style={{ fontSize: '1.5rem', fontWeight: '600', color: '#1d1d1f' }}>MOOC App</h1>
               <div className="mt-4">
-                <p>
-                MOOC App is feature-rich components and beautifully Bootstrap UIKit
-                  for developers, built with bootstrap responsive framework.
+                <p style={{ fontSize: '0.9rem', color: '#6e6e73' }}>
+                  MOOC App is a feature-rich platform with beautifully designed components, built with the Bootstrap responsive framework.
                 </p>
-                {/* social media */}
+                {/* Social Media */}
                 <div className="fs-4 mt-4">
-                  {/*Facebook*/}
-                  <a href="#" className="me-2 text-white">
+                  <a href="#" className="me-3 text-dark" style={{ color: '#6e6e73', textDecoration: 'none' }}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width={16}
@@ -29,10 +27,9 @@ function BaseFooter() {
                       <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
                     </svg>
                   </a>
-                  {/*Twitter*/}
-                  <a href="#" className="me-2 text-white">
+                  <a href="#" className="me-3 text-dark" style={{ color: '#6e6e73', textDecoration: 'none' }}>
                     <svg
-                      xmlns="http://www.w3.org/2000/svg "
+                      xmlns="http://www.w3.org/2000/svg"
                       width={16}
                       height={16}
                       fill="currentColor"
@@ -42,8 +39,7 @@ function BaseFooter() {
                       <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
                     </svg>
                   </a>
-                  {/*GitHub*/}
-                  <a href="#" className='text-white'>
+                  <a href="#" className="text-dark" style={{ color: '#6e6e73', textDecoration: 'none' }}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width={16}
@@ -59,133 +55,92 @@ function BaseFooter() {
               </div>
             </div>
           </div>
+
+          {/* Company Links */}
           <div className="offset-lg-1 col-lg-2 col-md-3 col-6">
             <div className="mb-4">
-              {/* list */}
-              <h3 className="fw-bold mb-3">Company</h3>
+              <h3 className="fw-bold mb-3" style={{ fontSize: '1rem', color: '#1d1d1f' }}>Company</h3>
               <ul className="list-unstyled nav nav-footer flex-column nav-x-0">
-                <li>
-                  <a href="#" className="nav-link text-white">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="nav-link text-white">
-                    Pricing
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="nav-link text-white">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="nav-link text-white">
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="nav-link text-white">
-                    Contact
-                  </a>
-                </li>
+                {['About', 'Pricing', 'Blog', 'Careers', 'Contact'].map((link, index) => (
+                  <li key={index}>
+                    <a href="#" className="nav-link text-dark" style={{ fontSize: '0.9rem', color: '#6e6e73', textDecoration: 'none' }}>
+                      {link}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
+
+          {/* Support Links */}
           <div className="col-lg-2 col-md-3 col-6">
             <div className="mb-4">
-              {/* list */}
-              <h3 className="fw-bold mb-3">Support</h3>
+              <h3 className="fw-bold mb-3" style={{ fontSize: '1rem', color: '#1d1d1f' }}>Support</h3>
               <ul className="list-unstyled nav nav-footer flex-column nav-x-0">
-                <li>
-                  <a href="#" className="nav-link text-white">
-                    Help and Support
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="nav-link text-white">
-                    Become Instructor
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="nav-link text-white">
-                    Get the app
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="nav-link text-white">
-                    FAQ’s
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="nav-link text-white">
-                    Tutorial
-                  </a>
-                </li>
+                {['Help and Support', 'Become Instructor', 'Get the app', 'FAQ’s', 'Tutorial'].map((link, index) => (
+                  <li key={index}>
+                    <a href="#" className="nav-link text-dark" style={{ fontSize: '0.9rem', color: '#6e6e73', textDecoration: 'none' }}>
+                      {link}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
+
+          {/* Contact Info */}
           <div className="col-lg-3 col-md-12">
-            {/* contact info */}
             <div className="mb-4">
-              <h3 className="fw-bold mb-3">Get in touch</h3>
-              <p>123 Main Street, U.S.A</p>
-              <p className="mb-1">
-                Email:
-                <a href="#" className='text-white'> support@mooc.com</a>
+              <h3 className="fw-bold mb-3" style={{ fontSize: '1rem', color: '#1d1d1f' }}>Get in touch</h3>
+              <p style={{ fontSize: '0.9rem', color: '#6e6e73' }}>123 Main Street, U.S.A</p>
+              <p className="mb-1" style={{ fontSize: '0.9rem', color: '#6e6e73' }}>
+                Email: <a href="#" style={{ color: '#6e6e73', textDecoration: 'none' }}>support@mooc.com</a>
               </p>
-              <p>
-                Phone:
-                <span className="text-dark fw-semibold">(000) 123 456 789</span>
+              <p style={{ fontSize: '0.9rem', color: '#6e6e73' }}>
+                Phone: <span style={{ color: '#6e6e73' }}>(000) 123 456 789</span>
               </p>
               <div className="d-flex">
-                <a href="#">
+                <a href="https://apps.apple.com/">
                   <img
-                    src="../../assets/images/svg/appstore.svg"
-                    alt=""
-                    className="img-fluid"
+                    src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                    alt="App Store"
+                    className="img-fluid me-2"
+                    style={{ borderRadius: '8px', height: '40px' }}
                   />
                 </a>
-                <a href="#" className="ms-2">
+                <a href="https://play.google.com/store">
                   <img
-                    src="../../assets/images/svg/playstore.svg"
-                    alt=""
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/512px-Google_Play_Store_badge_EN.svg.png"
+                    alt="Play Store"
                     className="img-fluid"
+                    style={{ borderRadius: '8px', height: '40px' }}
                   />
                 </a>
-              </div>
+              </div>            
             </div>
           </div>
         </div>
-        <div className="row align-items-center g-0 border-top py-2 mt-6">
-          {/* Desc */}
+
+        {/* Footer Bottom */}
+        <div className="row align-items-center g-0 border-top py-4 mt-6" style={{ borderColor: '#d2d2d7' }}>
           <div className="col-md-10 col-12">
             <div className="d-lg-flex align-items-center">
               <div className="me-4">
-                <span>
-                  ©<span id="copyright5"></span>
-                  MOOC
+                <span style={{ fontSize: '0.9rem', color: '#6e6e73' }}>
+                  © {new Date().getFullYear()} MOOC
                 </span>
               </div>
               <div>
                 <nav className="nav nav-footer">
-                  <a className="nav-link text-white ps-0" href="#">
-                    Privacy Policy
-                  </a>
-                  <a className="nav-link text-white px-2 px-md-3" href="#">
-                    Cookie Notice
-                  </a>
-                  <a className="nav-link text-white d-none d-lg-block" href="#">
-                    Do Not Sell My Personal Information
-                  </a>
-                  <a className="nav-link text-white" href="#">
-                    Terms of Use
-                  </a>
+                  {['Privacy Policy', 'Cookie Notice', 'Do Not Sell My Personal Information', 'Terms of Use'].map((link, index) => (
+                    <a key={index} className="nav-link text-dark" href="#" style={{ fontSize: '0.9rem', color: '#6e6e73', textDecoration: 'none', marginRight: '1rem' }}>
+                      {link}
+                    </a>
+                  ))}
                 </nav>
               </div>
             </div>
           </div>
-          {/* Links */}
           <div className="col-12 col-md-2 d-md-flex justify-content-end">
             <div className="dropdown">
               <a
@@ -194,138 +149,26 @@ function BaseFooter() {
                 id="dropdownMenuLink"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                style={{ fontSize: '0.9rem', color: '#6e6e73', textDecoration: 'none' }}
               >
                 <i className="fe fe-globe me-2 align-middle" />
                 Language
               </a>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    <span className="me-2">
-                      <svg
-                        width={16}
-                        height={13}
-                        viewBox="0 0 16 13"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g clipPath="url(#clip0_5543_19736)">
-                          <path d="M0 0.5H16V12.5H0V0.5Z" fill="#012169" />
-                          <path
-                            d="M1.875 0.5L7.975 5.025L14.05 0.5H16V2.05L10 6.525L16 10.975V12.5H14L8 8.025L2.025 12.5H0V11L5.975 6.55L0 2.1V0.5H1.875Z"
-                            fill="white"
-                          />
-                          <path
-                            d="M10.6 7.525L16 11.5V12.5L9.225 7.525H10.6ZM6 8.025L6.15 8.9L1.35 12.5H0L6 8.025ZM16 0.5V0.575L9.775 5.275L9.825 4.175L14.75 0.5H16ZM0 0.5L5.975 4.9H4.475L0 1.55V0.5Z"
-                            fill="#C8102E"
-                          />
-                          <path
-                            d="M6.025 0.5V12.5H10.025V0.5H6.025ZM0 4.5V8.5H16V4.5H0Z"
-                            fill="white"
-                          />
-                          <path
-                            d="M0 5.325V7.725H16V5.325H0ZM6.825 0.5V12.5H9.225V0.5H6.825Z"
-                            fill="#C8102E"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_5543_19736">
-                            <rect
-                              width={16}
-                              height={12}
-                              fill="white"
-                              transform="translate(0 0.5)"
-                            />
-                          </clipPath>
-                        </defs>
-                      </svg>
-                    </span>
-                    English
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    <span className="me-2">
-                      <svg
-                        width={16}
-                        height={13}
-                        viewBox="0 0 16 13"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g clipPath="url(#clip0_5543_19744)">
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M0 0.5H16V12.5H0V0.5Z"
-                            fill="white"
-                          />
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M0 0.5H5.3325V12.5H0V0.5Z"
-                            fill="#002654"
-                          />
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M10.668 0.5H16.0005V12.5H10.668V0.5Z"
-                            fill="#CE1126"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_5543_19744">
-                            <rect
-                              width={16}
-                              height={12}
-                              fill="white"
-                              transform="translate(0 0.5)"
-                            />
-                          </clipPath>
-                        </defs>
-                      </svg>
-                    </span>
-                    Français
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    <span className="me-2">
-                      <svg
-                        width={16}
-                        height={13}
-                        viewBox="0 0 16 13"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g clipPath="url(#clip0_5543_19751)">
-                          <path d="M0 8.5H16V12.5H0V8.5Z" fill="#FFCE00" />
-                          <path d="M0 0.5H16V4.5H0V0.5Z" fill="black" />
-                          <path d="M0 4.5H16V8.5H0V4.5Z" fill="#DD0000" />
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_5543_19751">
-                            <rect
-                              width={16}
-                              height={12}
-                              fill="white"
-                              transform="translate(0 0.5)"
-                            />
-                          </clipPath>
-                        </defs>
-                      </svg>
-                    </span>
-                    Deutsch
-                  </a>
-                </li>
+                {['English', 'Français', 'Deutsch'].map((lang, index) => (
+                  <li key={index}>
+                    <a className="dropdown-item" href="#" style={{ fontSize: '0.9rem', color: '#1d1d1f' }}>
+                      {lang}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         </div>
       </div>
     </footer>
-
-  )
+  );
 }
 
-export default BaseFooter
+export default BaseFooter;
