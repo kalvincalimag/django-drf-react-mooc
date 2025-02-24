@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 function BaseHeader() {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm" style={{ backgroundColor: '#f5f5f7' }}>
         <div className="container">
-          <Link className="navbar-brand fw-bold" to="/">
-            MOOC App
+          <Link className="navbar-brand fw-bold text-dark" to="/" style={{ fontSize: '1.25rem', fontWeight: '600', marginRight: '2rem' }}>
+            MOOC
           </Link>
           <button
             className="navbar-toggler border-0"
@@ -22,29 +22,30 @@ function BaseHeader() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link px-3" to="/pages/contact-us/">
+                <Link className="nav-link px-2 text-dark" to="/pages/contact-us/" style={{ fontSize: '0.9rem' }}>
                   <i className="fas fa-phone me-1"></i>Contact Us
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link px-3" to="/pages/about-us/">
+                <Link className="nav-link px-2 text-dark" to="/pages/about-us/" style={{ fontSize: '0.9rem' }}>
                   <i className="fas fa-address-card me-1"></i>About Us
                 </Link>
               </li>
               <li className="nav-item dropdown">
                 <a
-                  className="nav-link dropdown-toggle px-3"
+                  className="nav-link dropdown-toggle px-2 text-dark"
                   href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
+                  style={{ fontSize: '0.9rem' }}
                 >
                   <i className="fas fa-chalkboard-user me-1"></i>Instructor
                 </a>
-                <ul className="dropdown-menu dropdown-menu-dark">
+                <ul className="dropdown-menu dropdown-menu-light shadow">
                   <li>
                     <Link
-                      className="dropdown-item py-2"
+                      className="dropdown-item py-2 text-dark"
                       to={`/instructor/dashboard/`}
                     >
                       <i className="bi bi-grid-fill me-2"></i>Dashboard
@@ -52,7 +53,7 @@ function BaseHeader() {
                   </li>
                   <li>
                     <Link
-                      className="dropdown-item py-2"
+                      className="dropdown-item py-2 text-dark"
                       to={`/instructor/courses/`}
                     >
                       <i className="fas fa-shopping-cart me-2"></i>My Courses
@@ -60,7 +61,7 @@ function BaseHeader() {
                   </li>
                   <li>
                     <Link
-                      className="dropdown-item py-2"
+                      className="dropdown-item py-2 text-dark"
                       to={`/instructor/create-course/`}
                     >
                       <i className="fas fa-plus me-2"></i>Create Course
@@ -68,7 +69,7 @@ function BaseHeader() {
                   </li>
                   <li>
                     <Link
-                      className="dropdown-item py-2"
+                      className="dropdown-item py-2 text-dark"
                       to={`/instructor/reviews/`}
                     >
                       <i className="fas fa-star me-2"></i>Reviews
@@ -76,7 +77,7 @@ function BaseHeader() {
                   </li>
                   <li>
                     <Link
-                      className="dropdown-item py-2"
+                      className="dropdown-item py-2 text-dark"
                       to={`/instructor/question-answer/`}
                     >
                       <i className="fas fa-envelope me-2"></i>Q/A
@@ -84,7 +85,7 @@ function BaseHeader() {
                   </li>
                   <li>
                     <Link
-                      className="dropdown-item py-2"
+                      className="dropdown-item py-2 text-dark"
                       to={`/instructor/students/`}
                     >
                       <i className="fas fa-users me-2"></i>Students
@@ -92,7 +93,7 @@ function BaseHeader() {
                   </li>
                   <li>
                     <Link
-                      className="dropdown-item py-2"
+                      className="dropdown-item py-2 text-dark"
                       to={`/instructor/earning/`}
                     >
                       <i className="fas fa-dollar-sign me-2"></i>Earning
@@ -100,7 +101,7 @@ function BaseHeader() {
                   </li>
                   <li>
                     <Link
-                      className="dropdown-item py-2"
+                      className="dropdown-item py-2 text-dark"
                       to={`/instructor/profile/`}
                     >
                       <i className="fas fa-gear me-2"></i>Settings & Profile
@@ -110,18 +111,19 @@ function BaseHeader() {
               </li>
               <li className="nav-item dropdown">
                 <a
-                  className="nav-link dropdown-toggle px-3"
+                  className="nav-link dropdown-toggle px-2 text-dark"
                   href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
+                  style={{ fontSize: '0.9rem' }}
                 >
                   <i className="fas fa-graduation-cap me-1"></i>Student
                 </a>
-                <ul className="dropdown-menu dropdown-menu-dark">
+                <ul className="dropdown-menu dropdown-menu-light shadow">
                   <li>
                     <Link
-                      className="dropdown-item py-2"
+                      className="dropdown-item py-2 text-dark"
                       to={`/student/dashboard/`}
                     >
                       <i className="bi bi-grid-fill me-2"></i>Dashboard
@@ -129,7 +131,7 @@ function BaseHeader() {
                   </li>
                   <li>
                     <Link
-                      className="dropdown-item py-2"
+                      className="dropdown-item py-2 text-dark"
                       to={`/student/courses/`}
                     >
                       <i className="fas fa-shopping-cart me-2"></i>My Courses
@@ -137,7 +139,7 @@ function BaseHeader() {
                   </li>
                   <li>
                     <Link
-                      className="dropdown-item py-2"
+                      className="dropdown-item py-2 text-dark"
                       to={`/student/wishlist/`}
                     >
                       <i className="fas fa-heart me-2"></i>Wishlist
@@ -145,7 +147,7 @@ function BaseHeader() {
                   </li>
                   <li>
                     <Link
-                      className="dropdown-item py-2"
+                      className="dropdown-item py-2 text-dark"
                       to={`/student/question-answer/`}
                     >
                       <i className="fas fa-envelope me-2"></i>Q/A
@@ -153,7 +155,7 @@ function BaseHeader() {
                   </li>
                   <li>
                     <Link
-                      className="dropdown-item py-2"
+                      className="dropdown-item py-2 text-dark"
                       to={`/student/profile/`}
                     >
                       <i className="fas fa-gear me-2"></i>Profile & Settings
@@ -165,26 +167,28 @@ function BaseHeader() {
             <form className="d-flex me-3" role="search">
               <div className="input-group">
                 <input
-                  className="form-control border-0"
+                  className="form-control border-0 rounded"
                   type="search"
                   placeholder="Search Courses"
                   aria-label="Search Courses"
+                  style={{ padding: '0.375rem 0.75rem', fontSize: '0.9rem' }}
                 />
-                <button className="btn btn-outline-light" type="submit">
+                <button className="btn btn-outline-dark rounded ms-2" type="submit" style={{ padding: '0.375rem 0.75rem', fontSize: '0.9rem' }}>
                   <i className="fas fa-search"></i>
                 </button>
               </div>
             </form>
             <div className="d-flex gap-2">
-              <Link to="/login/" className="btn btn-outline-light btn-sm">
+              <Link to="/login/" className="btn btn-outline-dark btn-sm rounded" style={{ fontSize: '0.9rem', padding: '0.375rem 0.75rem' }}>
                 <i className="fas fa-sign-in-alt me-1"></i>Login
               </Link>
-              <Link to="/register/" className="btn btn-outline-light btn-sm">
+              <Link to="/register/" className="btn btn-outline-dark btn-sm rounded" style={{ fontSize: '0.9rem', padding: '0.375rem 0.75rem' }}>
                 <i className="fas fa-user-plus me-1"></i>Register
               </Link>
               <Link
                 to="/cart/"
-                className="btn btn-success btn-sm position-relative"
+                className="btn btn-success btn-sm position-relative rounded"
+                style={{ fontSize: '0.9rem', padding: '0.375rem 0.75rem' }}
               >
                 <i className="fas fa-shopping-cart me-1"></i>Cart
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
