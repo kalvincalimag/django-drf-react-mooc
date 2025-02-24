@@ -30,7 +30,7 @@ function ForgotPassword() {
       <section className="container d-flex flex-column vh-100" style={{ marginTop: '150px' }}>
         <div className="row align-items-center justify-content-center g-0 h-lg-100 py-8">
           <div className="col-lg-5 col-md-8 py-8 py-xl-0">
-            <div className="card shadow-sm p-4">
+            <div className="card border-0 shadow-sm rounded-4 p-4">
               <div className="card-body p-4">
                 <div className="mb-4 text-center">
                   <h1 className="mb-1 fw-bold">Forgot Password</h1>
@@ -58,7 +58,7 @@ function ForgotPassword() {
                         Processing <i className="fas fa-spinner fa-spin"></i>
                       </button>
                     ) : (
-                      <button type="submit" className="btn btn-primary">
+                      <button type="submit" className="btn btn-dark">
                         Reset Password <i className="fas fa-arrow-right"></i>
                       </button>
                     )}

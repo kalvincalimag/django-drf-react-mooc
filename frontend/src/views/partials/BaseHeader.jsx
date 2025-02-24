@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function BaseHeader() {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm" style={{ backgroundColor: '#f5f5f7' }}>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light py-2 shadow-sm" style={{ backgroundColor: '#f5f5f7' }}>
         <div className="container">
           <Link className="navbar-brand fw-bold text-dark" to="/" style={{ fontSize: '1.25rem', fontWeight: '600', marginRight: '2rem' }}>
             MOOC
@@ -187,7 +187,7 @@ function BaseHeader() {
               </Link>
               <Link
                 to="/cart/"
-                className="btn btn-success btn-sm position-relative rounded"
+                className="btn btn-dark btn-sm position-relative rounded"
                 style={{ fontSize: '0.9rem', padding: '0.375rem 0.75rem' }}
               >
                 <i className="fas fa-shopping-cart me-1"></i>Cart

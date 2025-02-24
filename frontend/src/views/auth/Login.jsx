@@ -32,7 +32,7 @@ function Login() {
               <div className="card-body">
                 <h1 className="fw-bold text-center mb-4">Sign in</h1>
                 <p className="text-center text-muted mb-4">
-                  Don’t have an account? <Link to="/register/">Sign up</Link>
+                  Don’t have an account? <Link to="/register/" className='text-dark text-decoration-underline'>Sign up</Link>
                 </p>
 
                 <form onSubmit={handleSubmit}>
@@ -65,12 +65,12 @@ function Login() {
                       <input type="checkbox" id="rememberme" className="form-check-input" />
                       <label htmlFor="rememberme" className="form-check-label">Remember me</label>
                     </div>
-                    <Link to="/forgot-password/" className="text-decoration-none">Forgot password?</Link>
+                    <Link to="/forgot-password/" className="text-dark text-decoration-underline">Forgot password?</Link>
                   </div>
 
                   <button
                     type="submit"
-                    className="btn btn-primary w-100 rounded-3"
+                    className="btn btn-dark w-100 rounded-3"
                     disabled={isLoading}
                   >
                     {isLoading ? (
