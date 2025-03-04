@@ -341,7 +341,7 @@ class StripeCheckoutAPIView(generics.CreateAPIView):
     
     def create(self, reqeust, *args, **kwargs):
         order_oid = self.kwargs['order_oid']
-        order = api_models.CartOrder.objects.filter(oid=order_oid)
+        order = api_models.CartOrder.objects.get(oid=order_oid)
         
         if not order:
             return Response({"message": "Order Not Found"}, status=status.HTTP_404_NOT_FOUND)
@@ -352,8 +352,8 @@ class StripeCheckoutAPIView(generics.CreateAPIView):
                 payment_method_types=['card'],
                 line_items=[
                     {
-                        "currency": "usd",
                         "price_data": {
+                            "currency": "usd",
                             "product_data": {
                                 "name": order.full_name,
                             },
@@ -367,8 +367,7 @@ class StripeCheckoutAPIView(generics.CreateAPIView):
                 success_url=settings.FRONTEND_SITE_URL + '/payment-success/' + order.oid + '?session_id={CHECKOUT_SESSION_ID}',
                 cancel_url=settings.FRONTEND_SITE_URL + '/payment-failed/'
             )
-            
             order.stripe_session_id = checkout_session.id
             return redirect(checkout_session.url)
-        except:
-            pass
+        except stripe.error.StripeError as e:
+            return Response({"message": f"Something went wrong when trying to make payment. Error: {e}"})
