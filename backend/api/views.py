@@ -1,5 +1,6 @@
 import random
 from userauths.models import CustomUser, Profile
+from django.shortcuts import render, redirect
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny 
@@ -13,7 +14,7 @@ from api import models as api_models
 from decimal import Decimal
 import stripe
 
-stripe.api_key = settings.STRIPE_API_KEY
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -361,7 +362,13 @@ class StripeCheckoutAPIView(generics.CreateAPIView):
                         },
                         "quantity": 1,
                     }
-                ]  
+                ],
+                mode="payment",
+                success_url=settings.FRONTEND_SITE_URL + '/payment-success/' + order.oid + '?session_id={CHECKOUT_SESSION_ID}',
+                cancel_url=settings.FRONTEND_SITE_URL + '/payment-failed/'
             )
+            
+            order.stripe_session_id = checkout_session.id
+            return redirect(checkout_session.url)
         except:
             pass
