@@ -13,6 +13,7 @@ from api import serializers as api_serializers
 from api import models as api_models
 from decimal import Decimal
 import stripe
+import requests
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -371,3 +372,14 @@ class StripeCheckoutAPIView(generics.CreateAPIView):
             return redirect(checkout_session.url)
         except stripe.error.StripeError as e:
             return Response({"message": f"Something went wrong when trying to make payment. Error: {e}"})
+
+def get_access_token(client_id, secret_key):
+    token_url = 'https://api-m.sandbox.paypal.com/v1/oauth2/token'
+    auth = (client_id, secret_key)
+    data = {'grant_type': 'client_credentials'}
+    response = requests.post(token_url, auth=auth, data=data)
+    
+    if response.status_code == requests.codes.ok:
+        return response.json()['access_token']
+    else:
+        raise Exception(f"Error getting access token from Paypal {response.status_code}")
