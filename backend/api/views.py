@@ -383,3 +383,19 @@ def get_access_token(client_id, secret_key):
         return response.json()['access_token']
     else:
         raise Exception(f"Error getting access token from Paypal {response.status_code}")
+
+class PaymentSuccessAPIView(generics.CreateAPIView):
+    queryset = api_models.CartOrder.objects.all()
+    serializer_class = api_serializers.CartOrderSerializer
+    
+    def create(self, request, *args, **kwargs):
+        order_oid = request.data['order_oid']
+        session_id = request.data['session_id']
+        paypal_order_id = request.data['paypal_order_id']
+        
+        order = api_models.CartOrder.objects.get(oid=order_oid)
+        order_items = api_models.CartOrderItem.filter(order=order)
+        
+        # Paypal 
+        if paypal_order_id != 'null':
+            paypal_api_url = f'https://api-m.sandbox.paypal.com/v2/checkout/orders/{paypal_order_id}'
