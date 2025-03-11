@@ -412,10 +412,25 @@ class PaymentSuccessAPIView(generics.CreateAPIView):
                 
                 if paypal_order_status == 'COMPLETED':
                     if order.payment_status == 'Processing':
-                        order.payment_status = 'Paid'    
+                        order.payment_status = 'Paid'
+                        order.save()    
+                        return Response({'message': 'Payment successful. Thank you.'}, status=status.HTTP_200_OK)
                     else: 
-                        return Response({'message': 'Your order has already been paid prior. Thank you.'}, status=status.HTTP_200_OK)
+                        return Response({'message': 'Payment has already been made. Thank you.'}, status=status.HTTP_200_OK)
                 else: 
-                    return Response({'message': 'Payment unsuccessful. Please try again.'}, status=status.HTTP_400_BAD_REQUEST)
+                    return Response({'message': 'Payment failed'}, status=status.HTTP_400_BAD_REQUEST)
             else: 
-                return Response({'message': 'Error getting order details from Paypal'}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({'message': 'Error getting order details from Paypal'}, status=status.HTTP_502_BAD_GATEWAY)
+        
+        if session_id != 'null':
+            response = stripe.checkout.Session.retrieve(session_id)
+            
+            if response['payment_status'] == 'paid':
+                if order.payment_status == 'Processing':
+                    order.payment_status = 'Paid'
+                    order.save()
+                    return Response({'message': 'Payment successful. Thank you.'}, status=status.HTTP_200_OK)
+                else: 
+                    return Response({'message': 'Payment has already been made. Thank you.'}, status=status.HTTP_200_OK)
+            else: 
+                return Response({'message': 'Payment failed'}, status=status.HTTP_400_BAD_REQUEST)
