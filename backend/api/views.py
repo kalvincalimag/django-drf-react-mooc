@@ -16,7 +16,8 @@ import stripe
 import requests
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
-
+PAYPAL_ACCOUNT_ID = settings.PAYPAL_CLIENT_ID
+PAYPAL_SECRET_KEY = settings.PAYPAL_SECRET_KEY
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = api_serializers.MyTokenObtainPairSerializer
@@ -398,4 +399,23 @@ class PaymentSuccessAPIView(generics.CreateAPIView):
         
         # Paypal 
         if paypal_order_id != 'null':
-            paypal_api_url = f'https://api-m.sandbox.paypal.com/v2/checkout/orders/{paypal_order_id}'
+            paypal_api_url = f'https://api-m.sandbox.paypal.com/v2/checkout/orders/{order_oid}'
+            headers = {
+                'Content-Type': 'application/json',
+                'Authorization': f'Bearer {get_access_token(PAYPAL_ACCOUNT_ID, PAYPAL_SECRET_KEY)}'
+            }
+            response = requests.get(paypal_api_url, headers=headers)
+            
+            if response.status_code == requests.codes.ok:
+                paypal_order_data = response.json()
+                paypal_order_status = paypal_order_data['status']
+                
+                if paypal_order_status == 'COMPLETED':
+                    if order.payment_status == 'Processing':
+                        order.payment_status = 'Paid'    
+                    else: 
+                        return Response({'message': 'Your order has already been paid prior. Thank you.'}, status=status.HTTP_200_OK)
+                else: 
+                    return Response({'message': 'Payment unsuccessful. Please try again.'}, status=status.HTTP_400_BAD_REQUEST)
+            else: 
+                return Response({'message': 'Error getting order details from Paypal'}, status=status.HTTP_400_BAD_REQUEST)
