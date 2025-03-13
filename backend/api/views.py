@@ -476,3 +476,16 @@ class PaymentSuccessAPIView(generics.CreateAPIView):
                     return Response({'message': 'Payment has already been made. Thank you.'}, status=status.HTTP_200_OK)
             else: 
                 return Response({'message': 'Payment failed'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class SearchAPIView(generics.ListAPIView):
+    serializer_class = api_serializers.CourseSerializer
+    permission_classes = [AllowAny]
+    
+    def get_queryset(self):
+        query = self.request.query_params.get('query')
+        return api_models.Course.objects.filter(
+            title__icontains=query,
+            publishing_status='Published',
+            submission_status='Published'
+        )
