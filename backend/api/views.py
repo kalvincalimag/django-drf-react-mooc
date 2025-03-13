@@ -414,6 +414,27 @@ class PaymentSuccessAPIView(generics.CreateAPIView):
                     if order.payment_status == 'Processing':
                         order.payment_status = 'Paid'
                         order.save()    
+                        
+                        api_models.Notification.objects.create(
+                            user = order.student,
+                            order = order,
+                            type = 'Course Enrollment Completed',
+                        )
+                        
+                        for o in order_items:
+                            api_models.Notification.objects.create(
+                                teacher = o.teacher,
+                                order_item = o,
+                                type = 'New Order',
+                                order_item = o
+                            )
+                            api_models.EnrolledCourse.objects.create(
+                                user = order.student,
+                                teacher = o.teacher,
+                                course = o.course,
+                                order_item = o
+                            )  
+                        
                         return Response({'message': 'Payment successful. Thank you.'}, status=status.HTTP_200_OK)
                     else: 
                         return Response({'message': 'Payment has already been made. Thank you.'}, status=status.HTTP_200_OK)
@@ -429,6 +450,27 @@ class PaymentSuccessAPIView(generics.CreateAPIView):
                 if order.payment_status == 'Processing':
                     order.payment_status = 'Paid'
                     order.save()
+                    
+                    api_models.Notification.objects.create(
+                        user = order.student,
+                        order = order,
+                        type = 'Course Enrollment Completed',
+                    )
+                    
+                    for o in order_items:
+                        api_models.Notification.objects.create(
+                            teacher = o.teacher,
+                            order_item = o,
+                            type = 'New Order',
+                            order_item = o
+                        )
+                        api_models.EnrolledCourse.objects.create(
+                            user = order.student,
+                            teacher = o.teacher,
+                            course = o.course,
+                            order_item = o
+                        )  
+                    
                     return Response({'message': 'Payment successful. Thank you.'}, status=status.HTTP_200_OK)
                 else: 
                     return Response({'message': 'Payment has already been made. Thank you.'}, status=status.HTTP_200_OK)
