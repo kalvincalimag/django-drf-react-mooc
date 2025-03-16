@@ -374,6 +374,7 @@ class StripeCheckoutAPIView(generics.CreateAPIView):
         except stripe.error.StripeError as e:
             return Response({"message": f"Something went wrong when trying to make payment. Error: {e}"})
 
+
 def get_access_token(client_id, secret_key):
     token_url = 'https://api-m.sandbox.paypal.com/v1/oauth2/token'
     auth = (client_id, secret_key)
@@ -384,6 +385,7 @@ def get_access_token(client_id, secret_key):
         return response.json()['access_token']
     else:
         raise Exception(f"Error getting access token from Paypal {response.status_code}")
+
 
 class PaymentSuccessAPIView(generics.CreateAPIView):
     queryset = api_models.CartOrder.objects.all()
