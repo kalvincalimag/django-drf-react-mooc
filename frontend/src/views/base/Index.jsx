@@ -36,7 +36,7 @@ function Index() {
                         </div>
                         <div className="col-lg-6 d-flex justify-content-end">
                             <img
-                                src="https://geeksui.codescandy.com/geeks/assets/images/background/acedamy-img/girl-image.png"
+                                src="https://img.freepik.com/free-photo/portrait-asian-teen-boy-ready-school_23-2149132894.jpg?t=st=1742338469~exp=1742342069~hmac=9b2181a77675f11173b3b7e0cb136a3c5b91a55e806b231905039f24a2be727d&w=2000"
                                 alt="Learning Experience"
                                 className="img-fluid"
                                 style={{ borderRadius: '20px', maxWidth: '100%' }}
@@ -65,64 +65,58 @@ function Index() {
                             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
                                 <div className="col">
                                     {/* Card */}
-                                    <div className="card card-hover">
+                                    <div className="card card-hover shadow-sm border-0 rounded-4" style={{ backgroundColor: "#FFFFFF" }}>
                                         <Link to={`/course-detail/slug/`}>
                                             <img
                                                 src="https://geeksui.codescandy.com/geeks/assets/images/course/course-css.jpg"
                                                 alt="course"
-                                                className="card-img-top"
+                                                className="card-img-top rounded-top-4"
                                                 style={{ width: "100%", height: "200px", objectFit: "cover" }}
-
                                             />
                                         </Link>
                                         {/* Card Body */}
                                         <div className="card-body">
-                                            <div className="d-flex justify-content-between align-items-center mb-3">
-                                                <span className="badge bg-info">Intermediate</span>
+                                            <div className="d-flex justify-content-between align-items-center mb-2">
+                                                <span className="badge text-dark" style={{ backgroundColor: "#EAEAEA" }}>Intermediate</span>
                                                 <a href="#" className="fs-5">
                                                     <i className="fas fa-heart text-danger align-middle" />
                                                 </a>
                                             </div>
-                                            <h4 className="mb-2 text-truncate-line-2 ">
-                                                <Link to={`/course-detail/slug/`} className="text-inherit text-decoration-none text-dark fs-5">
-                                                    How to easily create a website with JavaScript
+                                            <h4 className="mb-2 text-truncate-line-2" style={{ fontFamily: "SF Pro Display, sans-serif", fontWeight: "600", color: "#1D1D1F" }}>
+                                                <Link to={`/course-detail/slug/`} className="text-decoration-none text-dark">
+                                                    The Ultimate Beginners CSS Crash Course
                                                 </Link>
                                             </h4>
-                                            <small>By: Claire Evans</small> <br />
-                                            <small>16k Students</small> <br />
-                                            <div className="lh-1 mt-3 d-flex">
-                                                <span className="align-text-top">
-                                                    <span className="fs-6">
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star-half text-warning'></i>
-                                                    </span>
+                                            <small className="text-muted">By: Claire Evans</small> <br />
+                                            <small className="text-muted">16k Students</small> <br />
+                                            <div className="lh-1 mt-3 d-flex align-items-center">
+                                                <span className="fs-6 text-warning">
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star-half'></i>
                                                 </span>
-                                                <span className="text-warning">4.5</span>
-                                                <span className="fs-6 ms-2">(9,300)</span>
+                                                <span className="text-dark ms-1 fw-semibold">4.5</span>
+                                                <span className="fs-6 text-muted ms-2">(9,300)</span>
                                             </div>
                                         </div>
                                         {/* Card Footer */}
-                                        <div className="card-footer">
-                                            <div className="row align-items-center g-0">
-                                                <div className="col">
-                                                    <h5 className="mb-0">$39.00</h5>
-                                                </div>
-                                                <div className="col-auto">
-                                                    <button type='button' className="text-inherit text-decoration-none btn btn-primary me-2">
-                                                        <i className="fas fa-shopping-cart text-primary text-white" />
+                                        <div className="card-footer bg-white border-0">
+                                            <div className="d-flex justify-content-between align-items-center">
+                                                <h5 className="mb-0 fw-bold" style={{ fontFamily: "SF Pro Display, sans-serif", color: "#1D1D1F" }}>$39.00</h5>
+                                                <div>
+                                                    <button type="button" className="btn btn-outline-secondary rounded-pill me-2 px-3">
+                                                        <i className="fas fa-shopping-cart" />
                                                     </button>
-                                                    <Link to={""} className="text-inherit text-decoration-none btn btn-primary">
-                                                        Enroll Now <i className="fas fa-arrow-right text-primary align-middle me-2 text-white" />
+                                                    <Link to={""} className="btn btn-dark rounded-pill px-4">
+                                                        Enroll Now <i className="fas fa-arrow-right align-middle ms-1" />
                                                     </Link>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
 
                                 {/* <nav className="d-flex mt-5">
                                   <ul className="pagination">
@@ -165,55 +159,50 @@ function Index() {
 
                                 <div className="col">
                                     {/* Card */}
-                                    <div className="card card-hover">
+                                    <div className="card card-hover shadow-sm border-0 rounded-4" style={{ backgroundColor: "#FFFFFF" }}>
                                         <Link to={`/course-detail/slug/`}>
                                             <img
                                                 src="https://geeksui.codescandy.com/geeks/assets/images/course/course-angular.jpg"
                                                 alt="course"
-                                                className="card-img-top"
+                                                className="card-img-top rounded-top-4"
+                                                style={{ width: "100%", height: "200px", objectFit: "cover" }}
                                             />
                                         </Link>
                                         {/* Card Body */}
                                         <div className="card-body">
-                                            <div className="d-flex justify-content-between align-items-center mb-3">
-                                                <span className="badge bg-info">Intermediate</span>
+                                            <div className="d-flex justify-content-between align-items-center mb-2">
+                                                <span className="badge text-dark" style={{ backgroundColor: "#EAEAEA" }}>Intermediate</span>
                                                 <a href="#" className="fs-5">
                                                     <i className="fas fa-heart text-danger align-middle" />
                                                 </a>
                                             </div>
-                                            <h4 className="mb-2 text-truncate-line-2 ">
-                                                <Link to={`/course-detail/slug/`} className="text-inherit text-decoration-none text-dark fs-5">
-                                                    How to easily create a website with JavaScript
+                                            <h4 className="mb-2 text-truncate-line-2" style={{ fontFamily: "SF Pro Display, sans-serif", fontWeight: "600", color: "#1D1D1F" }}>
+                                                <Link to={`/course-detail/slug/`} className="text-decoration-none text-dark">
+                                                    Angular Intermediate In-depth Course
                                                 </Link>
                                             </h4>
-                                            <small>By: Claire Evans</small> <br />
-                                            <small>16k Students</small> <br />
-                                            <div className="lh-1 mt-3 d-flex">
-                                                <span className="align-text-top">
-                                                    <span className="fs-6">
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star-half text-warning'></i>
-                                                    </span>
+                                            <small className="text-muted">By: Claire Evans</small> <br />
+                                            <small className="text-muted">16k Students</small> <br />
+                                            <div className="lh-1 mt-3 d-flex align-items-center">
+                                                <span className="fs-6 text-warning">
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star-half'></i>
                                                 </span>
-                                                <span className="text-warning">4.5</span>
-                                                <span className="fs-6 ms-2">(9,300)</span>
+                                                <span className="text-dark ms-1 fw-semibold">4.5</span>
+                                                <span className="fs-6 text-muted ms-2">(9,300)</span>
                                             </div>
                                         </div>
                                         {/* Card Footer */}
-                                        <div className="card-footer">
-                                            <div className="row align-items-center g-0">
-                                                <div className="col">
-                                                    <h5 className="mb-0">$39.00</h5>
-                                                </div>
-                                                <div className="col-auto">
-                                                    <a href="#" className="text-inherit text-decoration-none btn btn-primary">
-                                                        <i className="fas fa-shopping-cart text-primary align-middle me-2 text-white" />
-                                                        Enroll Now
-                                                    </a>
-                                                </div>
+                                        <div className="card-footer bg-white border-0">
+                                            <div className="d-flex justify-content-between align-items-center">
+                                                <h5 className="mb-0 fw-bold" style={{ fontFamily: "SF Pro Display, sans-serif", color: "#1D1D1F" }}>$39.00</h5>
+                                                <Link to={""} className="btn btn-dark rounded-pill px-4">
+                                                    <i className="fas fa-shopping-cart align-middle me-2 text-white" />
+                                                    Enroll Now
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
@@ -221,116 +210,104 @@ function Index() {
 
                                 <div className="col">
                                     {/* Card */}
-                                    <div className="card card-hover">
+                                    <div className="card card-hover shadow-sm border-0 rounded-4" style={{ backgroundColor: "#FFFFFF" }}>
                                         <Link to={`/course-detail/slug/`}>
                                             <img
                                                 src="https://geeksui.codescandy.com/geeks/assets/images/course/course-react.jpg"
                                                 alt="course"
-                                                className="card-img-top"
+                                                className="card-img-top rounded-top-4"
+                                                style={{ width: "100%", height: "200px", objectFit: "cover" }}
                                             />
                                         </Link>
                                         {/* Card Body */}
                                         <div className="card-body">
-                                            <div className="d-flex justify-content-between align-items-center mb-3">
-                                                <span className="badge bg-info">Intermediate</span>
+                                            <div className="d-flex justify-content-between align-items-center mb-2">
+                                                <span className="badge text-dark" style={{ backgroundColor: "#EAEAEA" }}>Intermediate</span>
                                                 <a href="#" className="fs-5">
                                                     <i className="fas fa-heart text-danger align-middle" />
                                                 </a>
                                             </div>
-                                            <h4 className="mb-2 text-truncate-line-2 ">
-                                                <Link to={`/course-detail/slug/`} className="text-inherit text-decoration-none text-dark fs-5">
-                                                    Learn React.Js for Beginners from Start to Finish
+                                            <h4 className="mb-2 text-truncate-line-2" style={{ fontFamily: "SF Pro Display, sans-serif", fontWeight: "600", color: "#1D1D1F" }}>
+                                                <Link to={`/course-detail/slug/`} className="text-decoration-none text-dark">
+                                                    Your Complete Guide to React JS
                                                 </Link>
                                             </h4>
-                                            <small>By: Claire Evans</small> <br />
-                                            <small>16k Students</small> <br />
-                                            <div className="lh-1 mt-3 d-flex">
-                                                <span className="align-text-top">
-                                                    <span className="fs-6">
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star-half text-warning'></i>
-                                                    </span>
+                                            <small className="text-muted">By: Claire Evans</small> <br />
+                                            <small className="text-muted">16k Students</small> <br />
+                                            <div className="lh-1 mt-3 d-flex align-items-center">
+                                                <span className="fs-6 text-warning">
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star-half'></i>
                                                 </span>
-                                                <span className="text-warning">4.5</span>
-                                                <span className="fs-6 ms-2">(9,300)</span>
+                                                <span className="text-dark ms-1 fw-semibold">4.5</span>
+                                                <span className="fs-6 text-muted ms-2">(9,300)</span>
                                             </div>
                                         </div>
                                         {/* Card Footer */}
-                                        <div className="card-footer">
-                                            <div className="row align-items-center g-0">
-                                                <div className="col">
-                                                    <h5 className="mb-0">$39.00</h5>
-                                                </div>
-                                                <div className="col-auto">
-                                                    <a href="#" className="text-inherit text-decoration-none btn btn-primary">
-                                                        <i className="fas fa-shopping-cart text-primary align-middle me-2 text-white" />
-                                                        Enroll Now
-                                                    </a>
-                                                </div>
+                                        <div className="card-footer bg-white border-0">
+                                            <div className="d-flex justify-content-between align-items-center">
+                                                <h5 className="mb-0 fw-bold" style={{ fontFamily: "SF Pro Display, sans-serif", color: "#1D1D1F" }}>$39.00</h5>
+                                                <Link to={""} className="btn btn-dark rounded-pill px-4">
+                                                    <i className="fas fa-shopping-cart align-middle me-2 text-white" />
+                                                    Enroll Now
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="col">
                                     {/* Card */}
-                                    <div className="card card-hover">
+                                    <div className="card card-hover shadow-sm border-0 rounded-4" style={{ backgroundColor: "#FFFFFF" }}>
                                         <Link to={`/course-detail/slug/`}>
                                             <img
                                                 src="https://geeksui.codescandy.com/geeks/assets/images/course/course-python.jpg"
                                                 alt="course"
-                                                className="card-img-top"
+                                                className="card-img-top rounded-top-4"
+                                                style={{ width: "100%", height: "200px", objectFit: "cover" }}
                                             />
                                         </Link>
                                         {/* Card Body */}
                                         <div className="card-body">
-                                            <div className="d-flex justify-content-between align-items-center mb-3">
-                                                <span className="badge bg-info">Intermediate</span>
+                                            <div className="d-flex justify-content-between align-items-center mb-2">
+                                                <span className="badge text-dark" style={{ backgroundColor: "#EAEAEA" }}>Intermediate</span>
                                                 <a href="#" className="fs-5">
                                                     <i className="fas fa-heart text-danger align-middle" />
                                                 </a>
                                             </div>
-                                            <h4 className="mb-2 text-truncate-line-2 ">
-                                                <Link to={`/course-detail/slug/`} className="text-inherit text-decoration-none text-dark fs-5">
-                                                    How to easily create a website with JavaScript
+                                            <h4 className="mb-2 text-truncate-line-2" style={{ fontFamily: "SF Pro Display, sans-serif", fontWeight: "600", color: "#1D1D1F" }}>
+                                                <Link to={`/course-detail/slug/`} className="text-decoration-none text-dark">
+                                                    How to Easily Create a Web App with Python
                                                 </Link>
                                             </h4>
-                                            <small>By: Claire Evans</small> <br />
-                                            <small>16k Students</small> <br />
-                                            <div className="lh-1 mt-3 d-flex">
-                                                <span className="align-text-top">
-                                                    <span className="fs-6">
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star text-warning'></i>
-                                                        <i className='fas fa-star-half text-warning'></i>
-                                                    </span>
+                                            <small className="text-muted">By: Claire Evans</small> <br />
+                                            <small className="text-muted">16k Students</small> <br />
+                                            <div className="lh-1 mt-3 d-flex align-items-center">
+                                                <span className="fs-6 text-warning">
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star'></i>
+                                                    <i className='fas fa-star-half'></i>
                                                 </span>
-                                                <span className="text-warning">4.5</span>
-                                                <span className="fs-6 ms-2">(9,300)</span>
+                                                <span className="text-dark ms-1 fw-semibold">4.5</span>
+                                                <span className="fs-6 text-muted ms-2">(9,300)</span>
                                             </div>
                                         </div>
                                         {/* Card Footer */}
-                                        <div className="card-footer">
-                                            <div className="row align-items-center g-0">
-                                                <div className="col">
-                                                    <h5 className="mb-0">$39.00</h5>
-                                                </div>
-                                                <div className="col-auto">
-                                                    <a href="#" className="text-inherit text-decoration-none btn btn-primary">
-                                                        <i className="fas fa-shopping-cart text-primary align-middle me-2 text-white" />
-                                                        Enroll Now
-                                                    </a>
-                                                </div>
+                                        <div className="card-footer bg-white border-0">
+                                            <div className="d-flex justify-content-between align-items-center">
+                                                <h5 className="mb-0 fw-bold" style={{ fontFamily: "SF Pro Display, sans-serif", color: "#1D1D1F" }}>$39.00</h5>
+                                                <Link to={""} className="btn btn-dark rounded-pill px-4">
+                                                    <i className="fas fa-shopping-cart align-middle me-2 text-white" />
+                                                    Enroll Now
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
 
                             </div>
 
@@ -339,43 +316,40 @@ function Index() {
                 </div>
             </section>
 
-            <section className="my-8 py-lg-8">
-                {/* container */}
+            <section className="py-8 my-8">
                 <div className="container">
-                    {/* row */}
-                    <div className="row align-items-center bg-primary gx-0 rounded-3 mt-5">
-                        {/* col */}
-                        <div className="col-lg-6 col-12 d-none d-lg-block">
-                            <div className="d-flex justify-content-center pt-4">
-                                {/* img */}
-                                <div className="position-relative">
-                                    <img
-                                        src="https://geeksui.codescandy.com/geeks/assets/images/png/cta-instructor-1.png"
-                                        alt="image"
-                                        className="img-fluid mt-n8"
-                                    />
-                                    <div className="ms-n8 position-absolute bottom-0 start-0 mb-6">
-                                        <img src="https://geeksui.codescandy.com/geeks/assets/images/svg/dollor.svg" alt="dollor" />
-                                    </div>
-                                    {/* img */}
-                                    <div className="me-n4 position-absolute top-0 end-0">
-                                        <img src="https://geeksui.codescandy.com/geeks/assets/images/svg/graph.svg" alt="graph" />
-                                    </div>
-                                </div>
+                    <div className="row align-items-center bg-primary rounded-4 text-white p-5">
+                        {/* Image Column (Hidden on Small Screens) */}
+                        <div className="col-lg-6 d-none d-lg-flex justify-content-center">
+                            <div className="position-relative">
+                                <img 
+                                    src="https://geeksui.codescandy.com/geeks/assets/images/png/cta-instructor-1.png" 
+                                    alt="Instructor" 
+                                    className="img-fluid mt-n5"
+                                />
+                                <img 
+                                    src="https://geeksui.codescandy.com/geeks/assets/images/svg/dollor.svg" 
+                                    alt="Dollar" 
+                                    className="position-absolute bottom-0 start-0 mb-5 ms-n5"
+                                />
+                                <img 
+                                    src="https://geeksui.codescandy.com/geeks/assets/images/svg/graph.svg" 
+                                    alt="Graph" 
+                                    className="position-absolute top-0 end-0 me-n4"
+                                />
                             </div>
                         </div>
-                        <div className="col-lg-5 col-12">
-                            <div className="text-white p-5 p-lg-0">
-                                {/* text */}
-                                <h2 className="h1 text-white">Become an instructor today</h2>
-                                <p className="mb-0">
-                                    Instructors from around the world teach millions of students on
-                                    Geeks. We provide the tools and skills to teach what you love.
-                                </p>
-                                <a href="#" className="btn bg-white text-dark fw-bold mt-4">
-                                    Start Teaching Today <i className='fas fa-arrow-right'></i>
-                                </a>
-                            </div>
+
+                        {/* Text Column */}
+                        <div className="col-lg-5 text-center text-lg-start">
+                            <h2 className="fw-bold">Become an Instructor Today</h2>
+                            <p className="mb-4">
+                                Join instructors worldwide who teach millions of students on Geeks. 
+                                We provide the tools and skills to help you share your knowledge.
+                            </p>
+                            <a href="#" className="btn btn-light text-primary fw-semibold">
+                                Start Teaching Today <i className="fas fa-arrow-right ms-2"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -384,47 +358,45 @@ function Index() {
             <section className="bg-gray-200 pt-8 pb-8 mt-5">
                 <div className="container pb-8">
                     {/* row */}
-                    <div className="row mb-lg-8 mb-5">
-                        <div className="offset-lg-1 col-lg-10 col-12">
+                    
+                    <div className="row mb-5 mb-lg-8">
+                        <div className="offset-lg-1 col-lg-10">
                             <div className="row align-items-center">
-                                {/* col */}
+                                {/* Left Column - Ratings & Text */}
                                 <div className="col-lg-6 col-md-8">
-                                    {/* rating */}
-                                    <div>
-                                        <div className="mb-3">
-                                            <span className="lh-1">
-                                                <span className="align-text-top ms-2">
-                                                    <i className='fas fa-star text-warning'></i>
-                                                    <i className='fas fa-star text-warning'></i>
-                                                    <i className='fas fa-star text-warning'></i>
-                                                    <i className='fas fa-star text-warning'></i>
-                                                    <i className='fas fa-star text-warning'></i>
-                                                </span>
-                                                <span className="text-dark fw-semibold">4.5/5.0</span>
-                                            </span>
-                                            <span className="ms-2">(Based on 3265 ratings)</span>
+                                    {/* Rating */}
+                                    <div className="mb-3 mt-5 d-flex align-items-center">
+                                        <div className="text-gold">
+                                            <i className="fas fa-star"></i>
+                                            <i className="fas fa-star"></i>
+                                            <i className="fas fa-star"></i>
+                                            <i className="fas fa-star"></i>
+                                            <i className="fas fa-star-half-alt"></i>
                                         </div>
-                                        {/* heading */}
-                                        <h2 className="h1">What our students say</h2>
-                                        <p className="mb-0">
-                                            Hear from
-                                            <span className="text-dark">teachers</span>,
-                                            <span className="text-dark">trainers</span>, and
-                                            <span className="text-dark">leaders</span>
-                                            in the learning space about how Geeks empowers them to provide
-                                            quality online learning experiences.
-                                        </p>
+                                        <span className="ms-2 text-dark fw-bold fs-5">4.5/5.0</span>
+                                        <span className="ms-2 text-muted">(Based on 3,265 ratings)</span>
                                     </div>
+
+                                    {/* Heading */}
+                                    <h2 className="h1 fw-semibold text-dark">What Our Students Say</h2>
+                                    <p className="text-gray-700 fs-5">
+                                        Hear from <span className="fw-semibold text-dark">teachers</span>, 
+                                        <span className="fw-semibold text-dark"> trainers</span>, and 
+                                        <span className="fw-semibold text-dark"> leaders</span> about how 
+                                        Geeks helps them create quality online learning experiences.
+                                    </p>
                                 </div>
+
+                                {/* Right Column - Button */}
                                 <div className="col-lg-6 col-md-4 text-md-end mt-4 mt-md-0">
-                                    {/* btn */}
-                                    <a href="#" className="btn btn-primary">
+                                    <a href="#" className="btn btn-dark fw-semibold px-4 py-2">
                                         View Reviews
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                     {/* row */}
                     <div className="row">
                         {/* col */}
@@ -437,234 +409,87 @@ function Index() {
                                     <div className="row">
                                         <div className="col-lg-4">
                                             <div className="item">
-                                                <div className="card">
-                                                    <div className="card-body text-center p-6">
-                                                        {/* img */}
+                                                <div className="card shadow-sm border-0 rounded-4 text-center p-4" style={{ backgroundColor: "#FFFFFF" }}>
+                                                    <div className="card-body">
+                                                        {/* Avatar */}
                                                         <img
                                                             src="../../assets/images/avatar/avatar-1.jpg"
                                                             alt="avatar"
-                                                            className="avatar avatar-lg rounded-circle"
+                                                            className="rounded-circle"
+                                                            style={{ width: "80px", height: "80px", objectFit: "cover" }}
                                                         />
-                                                        <p className="mb-0 mt-3">
-                                                            “The generated lorem Ipsum is therefore always free from
-                                                            repetition, injected humour, or words etc generate lorem
-                                                            Ipsum which looks racteristic reasonable.”
+                                                        {/* Quote */}
+                                                        <p className="mt-3 text-muted" style={{ fontSize: "16px", fontFamily: "SF Pro Display, sans-serif", fontWeight: "400" }}>
+                                                            “The generated lorem Ipsum is therefore always free from repetition, injected humour, or unnecessary words.”
                                                         </p>
-                                                        {/* rating */}
-                                                        <div className="lh-1 mb-3 mt-4">
-                                                            <span className="fs-6 align-top">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                            </span>
-                                                            <span className="text-warning">5</span>
-                                                            {/* text */}
+                                                        {/* Rating */}
+                                                        <div className="lh-1 mb-3 mt-3 text-warning">
+                                                            {[...Array(5)].map((_, i) => (
+                                                                <i key={i} className="fas fa-star"></i>
+                                                            ))}
+                                                            <span className="text-dark ms-1 fw-semibold">5.0</span>
                                                         </div>
-                                                        <h3 className="mb-0 h4">Gladys Colbert</h3>
-                                                        <span>Software Engineer at Palantir</span>
+                                                        {/* Name & Position */}
+                                                        <h4 className="mb-0" style={{ fontFamily: "SF Pro Display, sans-serif", fontWeight: "600", color: "#1D1D1F" }}>Gladys Colbert</h4>
+                                                        <span className="text-muted" style={{ fontSize: "14px" }}>Software Engineer at Palantir</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="col-lg-4">
                                             <div className="item">
-                                                <div className="card">
-                                                    <div className="card-body text-center p-6">
-                                                        {/* img */}
+                                                <div className="card shadow-sm border-0 rounded-4 text-center p-4 bg-white">
+                                                    <div className="card-body">
+                                                        {/* Avatar */}
                                                         <img
                                                             src="../../assets/images/avatar/avatar-1.jpg"
                                                             alt="avatar"
-                                                            className="avatar avatar-lg rounded-circle"
+                                                            className="rounded-circle"
+                                                            style={{ width: "80px", height: "80px", objectFit: "cover" }}
                                                         />
-                                                        <p className="mb-0 mt-3">
-                                                            “The generated lorem Ipsum is therefore always free from
-                                                            repetition, injected humour, or words etc generate lorem
-                                                            Ipsum which looks racteristic reasonable.”
+                                                        {/* Quote */}
+                                                        <p className="mt-3 text-muted" style={{ fontSize: "16px", fontWeight: "400" }}>
+                                                            “The generated lorem Ipsum is therefore always free from repetition, injected humour, or unnecessary words.”
                                                         </p>
-                                                        {/* rating */}
-                                                        <div className="lh-1 mb-3 mt-4">
-                                                            <span className="fs-6 align-top">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                            </span>
-                                                            <span className="text-warning">5</span>
-                                                            {/* text */}
+                                                        {/* Rating */}
+                                                        <div className="lh-1 mb-3 mt-3 text-warning">
+                                                            {[...Array(5)].map((_, i) => (
+                                                                <i key={i} className="fas fa-star"></i>
+                                                            ))}
+                                                            <span className="text-dark ms-1 fw-semibold">5.0</span>
                                                         </div>
-                                                        <h3 className="mb-0 h4">Gladys Colbert</h3>
-                                                        <span>Software Engineer at Palantir</span>
+                                                        {/* Name & Position */}
+                                                        <h4 className="mb-0 fw-semibold text-dark">Gladys Colbert</h4>
+                                                        <span className="text-muted" style={{ fontSize: "14px" }}>Software Engineer at Palantir</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="col-lg-4">
                                             <div className="item">
-                                                <div className="card">
-                                                    <div className="card-body text-center p-6">
-                                                        {/* img */}
+                                                <div className="card shadow-sm border-0 rounded-4 text-center p-4 bg-white">
+                                                    <div className="card-body">
+                                                        {/* Avatar */}
                                                         <img
                                                             src="../../assets/images/avatar/avatar-1.jpg"
                                                             alt="avatar"
-                                                            className="avatar avatar-lg rounded-circle"
+                                                            className="rounded-circle"
+                                                            style={{ width: "80px", height: "80px", objectFit: "cover" }}
                                                         />
-                                                        <p className="mb-0 mt-3">
-                                                            “The generated lorem Ipsum is therefore always free from
-                                                            repetition, injected humour, or words etc generate lorem
-                                                            Ipsum which looks racteristic reasonable.”
+                                                        {/* Quote */}
+                                                        <p className="mt-3 text-muted" style={{ fontSize: "16px", fontWeight: "400" }}>
+                                                            “The generated lorem Ipsum is therefore always free from repetition, injected humour, or unnecessary words.”
                                                         </p>
-                                                        {/* rating */}
-                                                        <div className="lh-1 mb-3 mt-4">
-                                                            <span className="fs-6 align-top">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width={11}
-                                                                    height={11}
-                                                                    fill="currentColor"
-                                                                    className="bi bi-star-fill text-warning"
-                                                                    viewBox="0 0 16 16"
-                                                                >
-                                                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                                </svg>
-                                                            </span>
-                                                            <span className="text-warning">5</span>
-                                                            {/* text */}
+                                                        {/* Rating */}
+                                                        <div className="lh-1 mb-3 mt-3 text-warning">
+                                                            {[...Array(5)].map((_, i) => (
+                                                                <i key={i} className="fas fa-star"></i>
+                                                            ))}
+                                                            <span className="text-dark ms-1 fw-semibold">5.0</span>
                                                         </div>
-                                                        <h3 className="mb-0 h4">Gladys Colbert</h3>
-                                                        <span>Software Engineer at Palantir</span>
+                                                        {/* Name & Position */}
+                                                        <h4 className="mb-0 fw-semibold text-dark">Gladys Colbert</h4>
+                                                        <span className="text-muted" style={{ fontSize: "14px" }}>Software Engineer at Palantir</span>
                                                     </div>
                                                 </div>
                                             </div>
