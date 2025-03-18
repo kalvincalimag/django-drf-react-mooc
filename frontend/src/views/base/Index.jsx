@@ -7,111 +7,40 @@ function Index() {
         <>
             <BaseHeader />
 
-            <section className="py-lg-8 py-5">
-                {/* container */}
-                <div className="container my-lg-8">
-                    {/* row */}
-                    <div className="row align-items-center">
-                        {/* col */}
-                        <div className="col-lg-6 mb-6 mb-lg-0">
+            <section className="d-flex align-items-center bg-white" style={{ height: 'calc(100vh - 56px)'}}>
+                <div className="container mx-auto" style={{ maxWidth: '1200px' }}>
+                    <div className="row align-items-center justify-content-between">
+                        <div className="col-lg-5">
+                            <h5 className="text-muted mb-3 fw-medium">
+                                <i className="fe fe-check icon-xs bg-light rounded-circle p-2 me-2" />
+                                A Smarter Way to Learn
+                            </h5>
+                            <h1 className="display-4 fw-semibold text-dark mb-3">
+                                Unlock Your Potential.
+                            </h1>
+                            <p className="lead text-secondary mb-4">
+                                Learn from industry experts and top universities with courses designed for your success.
+                            </p>
                             <div>
-                                {/* heading */}
-                                <h5 className="text-dark mb-4">
-                                    <i className="fe fe-check icon-xxs icon-shape bg-light-success text-success rounded-circle me-2" />
-                                    Most trusted education platform
-                                </h5>
-                                {/* heading */}
-                                <h1 className="display-3 fw-bold mb-3">
-                                    Grow your skills and advance career
-                                </h1>
-                                {/* para */}
-                                <p className="pe-lg-10 mb-5">
-                                    Start, switch, or advance your career with more than 5,000
-                                    courses, Professional Certificates, and degrees from world-class
-                                    universities and companies.
-                                </p>
-                                {/* btn */}
-                                <a href="#" className="btn btn-primary fs-4 text-inherit ms-3">
-                                    Join Free Now <i className='fas fa-plus'></i>
+                                <a href="#" className="btn btn-dark btn-lg rounded-pill px-4 me-3" 
+                                    style={{ opacity: 0.9, transition: 'opacity 0.3s' }} 
+                                    onMouseEnter={(e) => e.target.style.opacity = 1} 
+                                    onMouseLeave={(e) => e.target.style.opacity = 0.9}>
+                                    Get Started <i className="fas fa-chevron-right ms-2"></i>
                                 </a>
-                                <a
-                                    href="https://www.youtube.com/watch?v=Nfzi7034Kbg"
-                                    className="btn btn-outline-success fs-4 text-inherit ms-3"
-                                >
-
-                                    Watch Demo <i className='fas fa-video'></i>
+                                <a href="https://www.youtube.com/watch?v=Nfzi7034Kbg"
+                                    className="btn btn-outline-dark btn-lg rounded-pill px-4">
+                                    Watch Demo <i className="fas fa-play ms-2"></i>
                                 </a>
                             </div>
                         </div>
-                        {/* col */}
-                        <div className="col-lg-6 d-flex justify-content-center">
-                            {/* images */}
-                            <div className="position-relative">
-                                <img
-                                    src="https://geeksui.codescandy.com/geeks/assets/images/background/acedamy-img/girl-image.png"
-                                    alt="girl"
-                                    className="end-0 bottom-0"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="pb-8">
-                <div className="container mb-lg-8">
-                    {/* row */}
-                    <div className="row mb-5">
-                        <div className="col-md-6 col-lg-3 border-top-md border-top pb-4  border-end-md">
-                            {/* text */}
-                            <div className="py-7 text-center">
-                                <div className="mb-3">
-                                    <i className="fe fe-award fs-2 text-info" />
-                                </div>
-                                <div className="lh-1">
-                                    <h2 className="mb-1">316,000+</h2>
-                                    <span>Qualified Instructor</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-lg-3 border-top-md border-top border-end-lg">
-                            {/* icon */}
-                            <div className="py-7 text-center">
-                                <div className="mb-3">
-                                    <i className="fe fe-users fs-2 text-warning" />
-                                </div>
-                                {/* text */}
-                                <div className="lh-1">
-                                    <h2 className="mb-1">1.8 Billion+</h2>
-                                    <span>Course enrolments</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-lg-3 border-top-lg border-top border-end-md">
-                            {/* icon */}
-                            <div className="py-7 text-center">
-                                <div className="mb-3">
-                                    <i className="fe fe-tv fs-2 text-primary" />
-                                </div>
-                                {/* text */}
-                                <div className="lh-1">
-                                    <h2 className="mb-1">41,000+</h2>
-                                    <span>Courses in 42 languages</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-lg-3 border-top-lg border-top">
-                            {/* icon */}
-                            <div className="py-7 text-center">
-                                <div className="mb-3">
-                                    <i className="fe fe-film fs-2 text-success" />
-                                </div>
-                                {/* text */}
-                                <div className="lh-1">
-                                    <h2 className="mb-1">179,000+</h2>
-                                    <span>Online Videos</span>
-                                </div>
-                            </div>
+                        <div className="col-lg-6 d-flex justify-content-end">
+                            <img
+                                src="https://geeksui.codescandy.com/geeks/assets/images/background/acedamy-img/girl-image.png"
+                                alt="Learning Experience"
+                                className="img-fluid"
+                                style={{ borderRadius: '20px', maxWidth: '100%' }}
+                            />
                         </div>
                     </div>
                 </div>
@@ -195,7 +124,7 @@ function Index() {
                                 </div>
 
 
-                                <nav className="d-flex mt-5">
+                                {/* <nav className="d-flex mt-5">
                                   <ul className="pagination">
                                     <li
                                       className=""
@@ -232,7 +161,7 @@ function Index() {
                                       </button>
                                     </li>
                                   </ul>
-                                </nav>
+                                </nav> */}
 
                                 <div className="col">
                                     {/* Card */}
