@@ -16,7 +16,7 @@ import stripe
 import requests
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
-PAYPAL_ACCOUNT_ID = settings.PAYPAL_CLIENT_ID
+PAYPAL_ACCOUNT_ID = settings.PAYPAL_ACCOUNT_ID
 PAYPAL_SECRET_KEY = settings.PAYPAL_SECRET_KEY
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -426,9 +426,9 @@ class PaymentSuccessAPIView(generics.CreateAPIView):
                         for o in order_items:
                             api_models.Notification.objects.create(
                                 teacher = o.teacher,
+                                order = order,
                                 order_item = o,
                                 type = 'New Order',
-                                order_item = o
                             )
                             api_models.EnrolledCourse.objects.create(
                                 user = order.student,
@@ -462,9 +462,9 @@ class PaymentSuccessAPIView(generics.CreateAPIView):
                     for o in order_items:
                         api_models.Notification.objects.create(
                             teacher = o.teacher,
+                            order = order,
                             order_item = o,
                             type = 'New Order',
-                            order_item = o
                         )
                         api_models.EnrolledCourse.objects.create(
                             user = order.student,
