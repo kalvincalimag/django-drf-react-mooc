@@ -6,7 +6,7 @@ import useAxios from '../../utils/useAxios';
 
 function Index() {
 
-    const [course, setCourse] = useState([]);
+    const [courses, setCourses] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const fetchCourse = async () => {
@@ -15,7 +15,7 @@ function Index() {
             await useAxios()
             .get(`/course/course-list/`)
             .then((res) => {
-                console.log(res.data);
+                setCourses(res.data);
                 setIsLoading(false);
             });
         } catch (error) {
@@ -76,10 +76,10 @@ function Index() {
                         {/* col */}
                         <div className="col-12">
                             <div className="mb-6">
-                                <h2 className="mb-1 h1">🔥Most Popular Courses</h2>
+                                <h2 className="mb-1 h1">Most Popular Courses</h2>
                                 <p>
                                     These are the most popular courses among Geeks Courses learners
-                                    worldwide in year 2022
+                                    worldwide in year 2025
                                 </p>
                             </div>
                         </div>
@@ -87,60 +87,64 @@ function Index() {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-                                <div className="col">
-                                    {/* Card */}
-                                    <div className="card card-hover shadow-sm border-0 rounded-4" style={{ backgroundColor: "#FFFFFF" }}>
-                                        <Link to={`/course-detail/slug/`}>
-                                            <img
-                                                src="https://geeksui.codescandy.com/geeks/assets/images/course/course-css.jpg"
-                                                alt="course"
-                                                className="card-img-top rounded-top-4"
-                                                style={{ width: "100%", height: "200px", objectFit: "cover" }}
-                                            />
-                                        </Link>
-                                        {/* Card Body */}
-                                        <div className="card-body">
-                                            <div className="d-flex justify-content-between align-items-center mb-2">
-                                                <span className="badge text-dark" style={{ backgroundColor: "#EAEAEA" }}>Intermediate</span>
-                                                <a href="#" className="fs-5">
-                                                    <i className="fas fa-heart text-danger align-middle" />
-                                                </a>
-                                            </div>
-                                            <h4 className="mb-2 text-truncate-line-2" style={{ fontFamily: "SF Pro Display, sans-serif", fontWeight: "600", color: "#1D1D1F" }}>
-                                                <Link to={`/course-detail/slug/`} className="text-decoration-none text-dark">
-                                                    The Ultimate Beginners CSS Crash Course
-                                                </Link>
-                                            </h4>
-                                            <small className="text-muted">By: Claire Evans</small> <br />
-                                            <small className="text-muted">16k Students</small> <br />
-                                            <div className="lh-1 mt-3 d-flex align-items-center">
-                                                <span className="fs-6 text-warning">
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star-half'></i>
-                                                </span>
-                                                <span className="text-dark ms-1 fw-semibold">4.5</span>
-                                                <span className="fs-6 text-muted ms-2">(9,300)</span>
-                                            </div>
-                                        </div>
-                                        {/* Card Footer */}
-                                        <div className="card-footer bg-white border-0">
-                                            <div className="d-flex justify-content-between align-items-center">
-                                                <h5 className="mb-0 fw-bold" style={{ fontFamily: "SF Pro Display, sans-serif", color: "#1D1D1F" }}>$39.00</h5>
-                                                <div>
-                                                    <button type="button" className="btn btn-outline-secondary rounded-pill me-2 px-3">
-                                                        <i className="fas fa-shopping-cart" />
-                                                    </button>
-                                                    <Link to={""} className="btn btn-dark rounded-pill px-4">
-                                                        Enroll Now <i className="fas fa-arrow-right align-middle ms-1" />
+
+                                {courses?.map((c, index) => (
+                                    <div className="col" key={index}>
+                                        {/* Card */}
+                                        <div className="card card-hover shadow-sm border-0 rounded-4" style={{ backgroundColor: "#FFFFFF" }}>
+                                            <Link to={`/course-detail/slug/`}>
+                                                <img
+                                                    src="https://geeksui.codescandy.com/geeks/assets/images/course/course-css.jpg"
+                                                    alt="course"
+                                                    className="card-img-top rounded-top-4"
+                                                    style={{ width: "100%", height: "200px", objectFit: "cover" }}
+                                                />
+                                            </Link>
+                                            {/* Card Body */}
+                                            <div className="card-body">
+                                                <div className="d-flex justify-content-between align-items-center mb-2">
+                                                    <span className="badge text-dark" style={{ backgroundColor: "#EAEAEA" }}>Intermediate</span>
+                                                    <a href="#" className="fs-5">
+                                                        <i className="fas fa-heart text-danger align-middle" />
+                                                    </a>
+                                                </div>
+                                                <h4 className="mb-2 text-truncate-line-2" style={{ fontFamily: "SF Pro Display, sans-serif", fontWeight: "600", color: "#1D1D1F" }}>
+                                                    <Link to={`/course-detail/slug/`} className="text-decoration-none text-dark">
+                                                        The Ultimate Beginners CSS Crash Course
                                                     </Link>
+                                                </h4>
+                                                <small className="text-muted">By: Claire Evans</small> <br />
+                                                <small className="text-muted">16k Students</small> <br />
+                                                <div className="lh-1 mt-3 d-flex align-items-center">
+                                                    <span className="fs-6 text-warning">
+                                                        <i className='fas fa-star'></i>
+                                                        <i className='fas fa-star'></i>
+                                                        <i className='fas fa-star'></i>
+                                                        <i className='fas fa-star'></i>
+                                                        <i className='fas fa-star-half'></i>
+                                                    </span>
+                                                    <span className="text-dark ms-1 fw-semibold">4.5</span>
+                                                    <span className="fs-6 text-muted ms-2">(9,300)</span>
+                                                </div>
+                                            </div>
+                                            {/* Card Footer */}
+                                            <div className="card-footer bg-white border-0">
+                                                <div className="d-flex justify-content-between align-items-center">
+                                                    <h5 className="mb-0 fw-bold" style={{ fontFamily: "SF Pro Display, sans-serif", color: "#1D1D1F" }}>$39.00</h5>
+                                                    <div>
+                                                        <button type="button" className="btn btn-outline-secondary rounded-pill me-2 px-3">
+                                                            <i className="fas fa-shopping-cart" />
+                                                        </button>
+                                                        <Link to={""} className="btn btn-dark rounded-pill px-4">
+                                                            Enroll Now <i className="fas fa-arrow-right align-middle ms-1" />
+                                                        </Link>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </div>                                    
+                                ))}
+
 
                                 {/* <nav className="d-flex mt-5">
                                   <ul className="pagination">
@@ -180,158 +184,6 @@ function Index() {
                                     </li>
                                   </ul>
                                 </nav> */}
-
-                                <div className="col">
-                                    {/* Card */}
-                                    <div className="card card-hover shadow-sm border-0 rounded-4" style={{ backgroundColor: "#FFFFFF" }}>
-                                        <Link to={`/course-detail/slug/`}>
-                                            <img
-                                                src="https://geeksui.codescandy.com/geeks/assets/images/course/course-angular.jpg"
-                                                alt="course"
-                                                className="card-img-top rounded-top-4"
-                                                style={{ width: "100%", height: "200px", objectFit: "cover" }}
-                                            />
-                                        </Link>
-                                        {/* Card Body */}
-                                        <div className="card-body">
-                                            <div className="d-flex justify-content-between align-items-center mb-2">
-                                                <span className="badge text-dark" style={{ backgroundColor: "#EAEAEA" }}>Intermediate</span>
-                                                <a href="#" className="fs-5">
-                                                    <i className="fas fa-heart text-danger align-middle" />
-                                                </a>
-                                            </div>
-                                            <h4 className="mb-2 text-truncate-line-2" style={{ fontFamily: "SF Pro Display, sans-serif", fontWeight: "600", color: "#1D1D1F" }}>
-                                                <Link to={`/course-detail/slug/`} className="text-decoration-none text-dark">
-                                                    Angular Intermediate In-depth Course
-                                                </Link>
-                                            </h4>
-                                            <small className="text-muted">By: Claire Evans</small> <br />
-                                            <small className="text-muted">16k Students</small> <br />
-                                            <div className="lh-1 mt-3 d-flex align-items-center">
-                                                <span className="fs-6 text-warning">
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star-half'></i>
-                                                </span>
-                                                <span className="text-dark ms-1 fw-semibold">4.5</span>
-                                                <span className="fs-6 text-muted ms-2">(9,300)</span>
-                                            </div>
-                                        </div>
-                                        {/* Card Footer */}
-                                        <div className="card-footer bg-white border-0">
-                                            <div className="d-flex justify-content-between align-items-center">
-                                                <h5 className="mb-0 fw-bold" style={{ fontFamily: "SF Pro Display, sans-serif", color: "#1D1D1F" }}>$39.00</h5>
-                                                <Link to={""} className="btn btn-dark rounded-pill px-4">
-                                                    <i className="fas fa-shopping-cart align-middle me-2 text-white" />
-                                                    Enroll Now
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col">
-                                    {/* Card */}
-                                    <div className="card card-hover shadow-sm border-0 rounded-4" style={{ backgroundColor: "#FFFFFF" }}>
-                                        <Link to={`/course-detail/slug/`}>
-                                            <img
-                                                src="https://geeksui.codescandy.com/geeks/assets/images/course/course-react.jpg"
-                                                alt="course"
-                                                className="card-img-top rounded-top-4"
-                                                style={{ width: "100%", height: "200px", objectFit: "cover" }}
-                                            />
-                                        </Link>
-                                        {/* Card Body */}
-                                        <div className="card-body">
-                                            <div className="d-flex justify-content-between align-items-center mb-2">
-                                                <span className="badge text-dark" style={{ backgroundColor: "#EAEAEA" }}>Intermediate</span>
-                                                <a href="#" className="fs-5">
-                                                    <i className="fas fa-heart text-danger align-middle" />
-                                                </a>
-                                            </div>
-                                            <h4 className="mb-2 text-truncate-line-2" style={{ fontFamily: "SF Pro Display, sans-serif", fontWeight: "600", color: "#1D1D1F" }}>
-                                                <Link to={`/course-detail/slug/`} className="text-decoration-none text-dark">
-                                                    Your Complete Guide to React JS
-                                                </Link>
-                                            </h4>
-                                            <small className="text-muted">By: Claire Evans</small> <br />
-                                            <small className="text-muted">16k Students</small> <br />
-                                            <div className="lh-1 mt-3 d-flex align-items-center">
-                                                <span className="fs-6 text-warning">
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star-half'></i>
-                                                </span>
-                                                <span className="text-dark ms-1 fw-semibold">4.5</span>
-                                                <span className="fs-6 text-muted ms-2">(9,300)</span>
-                                            </div>
-                                        </div>
-                                        {/* Card Footer */}
-                                        <div className="card-footer bg-white border-0">
-                                            <div className="d-flex justify-content-between align-items-center">
-                                                <h5 className="mb-0 fw-bold" style={{ fontFamily: "SF Pro Display, sans-serif", color: "#1D1D1F" }}>$39.00</h5>
-                                                <Link to={""} className="btn btn-dark rounded-pill px-4">
-                                                    <i className="fas fa-shopping-cart align-middle me-2 text-white" />
-                                                    Enroll Now
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    {/* Card */}
-                                    <div className="card card-hover shadow-sm border-0 rounded-4" style={{ backgroundColor: "#FFFFFF" }}>
-                                        <Link to={`/course-detail/slug/`}>
-                                            <img
-                                                src="https://geeksui.codescandy.com/geeks/assets/images/course/course-python.jpg"
-                                                alt="course"
-                                                className="card-img-top rounded-top-4"
-                                                style={{ width: "100%", height: "200px", objectFit: "cover" }}
-                                            />
-                                        </Link>
-                                        {/* Card Body */}
-                                        <div className="card-body">
-                                            <div className="d-flex justify-content-between align-items-center mb-2">
-                                                <span className="badge text-dark" style={{ backgroundColor: "#EAEAEA" }}>Intermediate</span>
-                                                <a href="#" className="fs-5">
-                                                    <i className="fas fa-heart text-danger align-middle" />
-                                                </a>
-                                            </div>
-                                            <h4 className="mb-2 text-truncate-line-2" style={{ fontFamily: "SF Pro Display, sans-serif", fontWeight: "600", color: "#1D1D1F" }}>
-                                                <Link to={`/course-detail/slug/`} className="text-decoration-none text-dark">
-                                                    How to Easily Create a Web App with Python
-                                                </Link>
-                                            </h4>
-                                            <small className="text-muted">By: Claire Evans</small> <br />
-                                            <small className="text-muted">16k Students</small> <br />
-                                            <div className="lh-1 mt-3 d-flex align-items-center">
-                                                <span className="fs-6 text-warning">
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star'></i>
-                                                    <i className='fas fa-star-half'></i>
-                                                </span>
-                                                <span className="text-dark ms-1 fw-semibold">4.5</span>
-                                                <span className="fs-6 text-muted ms-2">(9,300)</span>
-                                            </div>
-                                        </div>
-                                        {/* Card Footer */}
-                                        <div className="card-footer bg-white border-0">
-                                            <div className="d-flex justify-content-between align-items-center">
-                                                <h5 className="mb-0 fw-bold" style={{ fontFamily: "SF Pro Display, sans-serif", color: "#1D1D1F" }}>$39.00</h5>
-                                                <Link to={""} className="btn btn-dark rounded-pill px-4">
-                                                    <i className="fas fa-shopping-cart align-middle me-2 text-white" />
-                                                    Enroll Now
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
 
