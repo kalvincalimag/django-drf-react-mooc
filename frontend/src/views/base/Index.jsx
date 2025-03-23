@@ -94,7 +94,7 @@ function Index() {
                                         <div className="card card-hover shadow-sm border-0 rounded-4" style={{ backgroundColor: "#FFFFFF" }}>
                                             <Link to={`/course-detail/slug/`}>
                                                 <img
-                                                    src="https://geeksui.codescandy.com/geeks/assets/images/course/course-css.jpg"
+                                                    src={c.image}
                                                     alt="course"
                                                     className="card-img-top rounded-top-4"
                                                     style={{ width: "100%", height: "200px", objectFit: "cover" }}
@@ -103,17 +103,20 @@ function Index() {
                                             {/* Card Body */}
                                             <div className="card-body">
                                                 <div className="d-flex justify-content-between align-items-center mb-2">
-                                                    <span className="badge text-dark" style={{ backgroundColor: "#EAEAEA" }}>Intermediate</span>
-                                                    <a href="#" className="fs-5">
-                                                        <i className="fas fa-heart text-danger align-middle" />
-                                                    </a>
+                                                <div>
+                                                    <span className="badge text-dark" style={{ backgroundColor: "#EAEAEA" }}>{c.level}</span>
+                                                    <span className="badge text-dark ms-2" style={{ backgroundColor: "#EAEAEA" }}>{c.language}</span>
+                                                </div>
+                                                <a href="#" className="fs-5 ms-auto">   
+                                                    <i className="fas fa-heart text-danger align-middle" />
+                                                </a> 
                                                 </div>
                                                 <h4 className="mb-2 text-truncate-line-2" style={{ fontFamily: "SF Pro Display, sans-serif", fontWeight: "600", color: "#1D1D1F" }}>
                                                     <Link to={`/course-detail/slug/`} className="text-decoration-none text-dark">
-                                                        The Ultimate Beginners CSS Crash Course
+                                                        {c.title}
                                                     </Link>
                                                 </h4>
-                                                <small className="text-muted">By: Claire Evans</small> <br />
+                                                <small className="text-muted">By: {c.teacher.full_name}</small> <br />
                                                 <small className="text-muted">16k Students</small> <br />
                                                 <div className="lh-1 mt-3 d-flex align-items-center">
                                                     <span className="fs-6 text-warning">
@@ -130,7 +133,7 @@ function Index() {
                                             {/* Card Footer */}
                                             <div className="card-footer bg-white border-0">
                                                 <div className="d-flex justify-content-between align-items-center">
-                                                    <h5 className="mb-0 fw-bold" style={{ fontFamily: "SF Pro Display, sans-serif", color: "#1D1D1F" }}>$39.00</h5>
+                                                    <h5 className="mb-0 fw-bold" style={{ fontFamily: "SF Pro Display, sans-serif", color: "#1D1D1F" }}>${c.price}</h5>
                                                     <div>
                                                         <button type="button" className="btn btn-outline-secondary rounded-pill me-2 px-3">
                                                             <i className="fas fa-shopping-cart" />

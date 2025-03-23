@@ -11,6 +11,7 @@ __pycache__/
 *.pyd
 *.sqlite3
 *.db
+/media/
 
 # Local development environment
 .env
