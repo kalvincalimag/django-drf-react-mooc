@@ -3,6 +3,9 @@ import BaseHeader from '../partials/BaseHeader'
 import BaseFooter from '../partials/BaseFooter'
 import { Link } from 'react-router-dom'
 import useAxios from '../../utils/useAxios';
+import Rater from 'react-rater';
+import "react-rater/lib/react-rater.css"
+
 
 function Index() {
 
@@ -117,17 +120,18 @@ function Index() {
                                                     </Link>
                                                 </h4>
                                                 <small className="text-muted">By: {c.teacher.full_name}</small> <br />
-                                                <small className="text-muted">16k Students</small> <br />
+                                                <small className="text-muted">
+                                                    {c.students?.length} Student
+                                                    {c.students?.length != 1 && "s"}
+                                                </small> <br />
                                                 <div className="lh-1 mt-3 d-flex align-items-center">
                                                     <span className="fs-6 text-warning">
-                                                        <i className='fas fa-star'></i>
-                                                        <i className='fas fa-star'></i>
-                                                        <i className='fas fa-star'></i>
-                                                        <i className='fas fa-star'></i>
-                                                        <i className='fas fa-star-half'></i>
+                                                        <Rater total={5} rating={c.average_rating || 0} interactive={false} />
                                                     </span>
-                                                    <span className="text-dark ms-1 fw-semibold">4.5</span>
-                                                    <span className="fs-6 text-muted ms-2">(9,300)</span>
+                                                    <span className="fs-6 text-muted ms-2">
+                                                        ({c.reviews?.length} Review
+                                                        {c.reviews?.length != 1 && "s"})
+                                                    </span>
                                                 </div>
                                             </div>
                                             {/* Card Footer */}
