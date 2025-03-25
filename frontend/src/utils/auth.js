@@ -63,8 +63,12 @@ export const setUser = async () => {
     } 
 
     if(isAccessTokenExpired(access_token)){
-        const response = getRefreshedToken(refresh_token);
-        setAuthUser(response.access, response.refresh);
+        try {
+            const response = await getRefreshedToken(refresh_token);
+            setAuthUser(response.access, response.refresh);    
+        } catch (error) {
+            logout();
+        }
     } else {
         setAuthUser(access_token, refresh_token);
     }
