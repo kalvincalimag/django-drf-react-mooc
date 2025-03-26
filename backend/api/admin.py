@@ -3,7 +3,7 @@ from api import models
 
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('title', 'course_id', 'teacher', 'category', 'price', 'date') 
-    fields = ('title', 'category', 'teacher', 'file', 'image', 'description', 'price', 'language', 'level', 'submission_status', 'publishing_status', 'featured', 'date')
+    fields = ('title', 'category', 'teacher', 'file', 'image', 'description', 'price', 'language', 'level', 'submission_status', 'publishing_status', 'featured', 'date', 'slug')
 
 
 class CartAdmin(admin.ModelAdmin):
