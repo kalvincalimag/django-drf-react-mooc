@@ -95,7 +95,7 @@ function Index() {
                                     <div className="col" key={index}>
                                         {/* Card */}
                                         <div className="card card-hover shadow-sm border-0 rounded-4" style={{ backgroundColor: "#FFFFFF" }}>
-                                            <Link to={`/course-detail/slug/`}>
+                                            <Link to={`course/course-detail/${c.slug}/`}>
                                                 <img
                                                     src={c.image}
                                                     alt="course"
@@ -115,7 +115,7 @@ function Index() {
                                                 </a> 
                                                 </div>
                                                 <h4 className="mb-2 text-truncate-line-2" style={{ fontFamily: "SF Pro Display, sans-serif", fontWeight: "600", color: "#1D1D1F" }}>
-                                                    <Link to={`/course-detail/slug/`} className="text-decoration-none text-dark">
+                                                    <Link to={`course/course-detail/${c.slug}/`} className="text-decoration-none text-dark">
                                                         {c.title}
                                                     </Link>
                                                 </h4>

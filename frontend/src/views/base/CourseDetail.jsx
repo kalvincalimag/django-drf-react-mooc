@@ -1,10 +1,32 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import {useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 
-import BaseHeader from '../partials/BaseHeader'
-import BaseFooter from '../partials/BaseFooter'
+import BaseHeader from '../partials/BaseHeader';
+import BaseFooter from '../partials/BaseFooter';
+
+import useAxios from '../../utils/useAxios';
+import { useParams } from 'react-router-dom';
+
 
 function CourseDetail() {
+
+    const [course, setCourse] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const param = useParams();
+
+    const axios = useAxios();
+    const fetchCourse = () => {
+        axios.get(`course/course-detail/${param.slug}/`).then((res) => {
+            // setCourse(res.data);    
+            console.log(res.data)
+            setLoading(false);
+        })
+    };
+
+    useEffect(() => {
+        fetchCourse();
+    });
+
     return (
         <>
             <BaseHeader />

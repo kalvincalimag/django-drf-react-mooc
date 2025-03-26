@@ -7,6 +7,8 @@ import Logout from './views/auth/Logout';
 import ForgotPassword from './views/auth/ForgotPassword';
 import CreateNewPassword from './views/auth/CreateNewPassword';
 import Index from './views/base/Index';
+import CourseDetail from './views/base/CourseDetail';
+
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
 
           {/* Core Routes */}
           <Route path='' element={<Index/>}/>
+          <Route path='course/course-detail/:slug/' element={<CourseDetail/>}/>
         </Routes>
       </MainWrapper>
     </BrowserRouter>
