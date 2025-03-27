@@ -3,9 +3,20 @@ import { Link } from "react-router-dom";
 function BaseHeader() {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light py-2 shadow-sm" style={{ backgroundColor: '#f5f5f7' }}>
+      <nav
+        className="navbar navbar-expand-lg navbar-light py-3 shadow-sm"
+        style={{ backgroundColor: "#f9f9f9" }}
+      >
         <div className="container">
-          <Link className="navbar-brand fw-bold text-dark" to="/" style={{ fontSize: '1.25rem', fontWeight: '600', marginRight: '2rem' }}>
+          <Link
+            className="navbar-brand fw-bold text-dark"
+            to="/"
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: "700",
+              letterSpacing: "-0.5px",
+            }}
+          >
             MOOC
           </Link>
           <button
@@ -22,25 +33,33 @@ function BaseHeader() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link px-2 text-dark" to="/pages/contact-us/" style={{ fontSize: '0.9rem' }}>
-                  <i className="fas fa-phone me-1"></i>Contact Us
+                <Link
+                  className="nav-link px-3 text-dark"
+                  to="/pages/contact-us/"
+                  style={{ fontSize: "0.95rem", fontWeight: "500" }}
+                >
+                  Contact Us
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link px-2 text-dark" to="/pages/about-us/" style={{ fontSize: '0.9rem' }}>
-                  <i className="fas fa-address-card me-1"></i>About Us
+                <Link
+                  className="nav-link px-3 text-dark"
+                  to="/pages/about-us/"
+                  style={{ fontSize: "0.95rem", fontWeight: "500" }}
+                >
+                  About Us
                 </Link>
               </li>
               <li className="nav-item dropdown">
                 <a
-                  className="nav-link dropdown-toggle px-2 text-dark"
+                  className="nav-link dropdown-toggle px-3 text-dark"
                   href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  style={{ fontSize: '0.9rem' }}
+                  style={{ fontSize: "0.95rem", fontWeight: "500" }}
                 >
-                  <i className="fas fa-chalkboard-user me-1"></i>Instructor
+                  Instructor
                 </a>
                 <ul className="dropdown-menu dropdown-menu-light shadow">
                   <li>
@@ -111,14 +130,14 @@ function BaseHeader() {
               </li>
               <li className="nav-item dropdown">
                 <a
-                  className="nav-link dropdown-toggle px-2 text-dark"
+                  className="nav-link dropdown-toggle px-3 text-dark"
                   href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  style={{ fontSize: '0.9rem' }}
+                  style={{ fontSize: "0.95rem", fontWeight: "500" }}
                 >
-                  <i className="fas fa-graduation-cap me-1"></i>Student
+                  Student
                 </a>
                 <ul className="dropdown-menu dropdown-menu-light shadow">
                   <li>
@@ -171,26 +190,42 @@ function BaseHeader() {
                   type="search"
                   placeholder="Search Courses"
                   aria-label="Search Courses"
-                  style={{ padding: '0.375rem 0.75rem', fontSize: '0.9rem' }}
+                  style={{
+                    padding: "0.5rem 1rem",
+                    fontSize: "0.95rem",
+                    backgroundColor: "#f1f1f1",
+                  }}
                 />
-                <button className="btn btn-outline-dark rounded ms-2" type="submit" style={{ padding: '0.375rem 0.75rem', fontSize: '0.9rem' }}>
+                <button
+                  className="btn btn-outline-dark rounded ms-2"
+                  type="submit"
+                  style={{ padding: "0.5rem 1rem", fontSize: "0.95rem" }}
+                >
                   <i className="fas fa-search"></i>
                 </button>
               </div>
             </form>
             <div className="d-flex gap-2">
-              <Link to="/login/" className="btn btn-outline-dark btn-sm rounded" style={{ fontSize: '0.9rem', padding: '0.375rem 0.75rem' }}>
-                <i className="fas fa-sign-in-alt me-1"></i>Login
+              <Link
+                to="/login/"
+                className="btn btn-outline-dark btn-sm rounded"
+                style={{ fontSize: "0.95rem", padding: "0.5rem 1rem" }}
+              >
+                Login
               </Link>
-              <Link to="/register/" className="btn btn-outline-dark btn-sm rounded" style={{ fontSize: '0.9rem', padding: '0.375rem 0.75rem' }}>
-                <i className="fas fa-user-plus me-1"></i>Register
+              <Link
+                to="/register/"
+                className="btn btn-outline-dark btn-sm rounded"
+                style={{ fontSize: "0.95rem", padding: "0.5rem 1rem" }}
+              >
+                Register
               </Link>
               <Link
                 to="/cart/"
                 className="btn btn-dark btn-sm position-relative rounded"
-                style={{ fontSize: '0.9rem', padding: '0.375rem 0.75rem' }}
+                style={{ fontSize: "0.95rem", padding: "0.5rem 1rem" }}
               >
-                <i className="fas fa-shopping-cart me-1"></i>Cart
+                Cart
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   3
                 </span>
