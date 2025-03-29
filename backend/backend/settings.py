@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     
     # Custom Apps
-    'core',
     'userauths',
     'api',
     
